@@ -1,0 +1,2 @@
+# InsertionSort Recursivo
+Deve-se implementar uma versao recursiva do algoritmos de ordenacao ao em memoria interna conhecido por InsertionSort, onde, a cada iteracao/decida recursiva, um algoritmo de busca binaria devera ser utilizado para localizar a posicao ao exata onde o elemento chave devera ser posicionado.
