@@ -1,0 +1,2 @@
+# Tabela Hash
+Implemente as operacoes basicas (1) pesquisa, (2) insercao e (3) remocao do algoritmo de pesquisa baseado em transformacao de chave (hashing). Escreva procedimentos separados para cada operacao. Alem disso, utilize o metodo da divisao como funcao de transformacao e a estrategia de encadeamento para tratar colisoes. Se necessario, na operacao de insercao, coloque o novo item apos todos os itens demais, ou seja, no final.
