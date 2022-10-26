@@ -1,0 +1,20 @@
+package command2;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		while(true){
+			String comando;
+			System.out.println("");
+		    Scanner oScanner = new Scanner(System.in);
+		    comando = oScanner.nextLine();
+		    
+			Invoker.invoke(comando);
+
+			if(comando.equals("exit"))
+				break;
+		}
+	}
+}
