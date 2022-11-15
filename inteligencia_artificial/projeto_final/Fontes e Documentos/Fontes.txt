@@ -1,0 +1,10 @@
+[1] https://www.world-stroke.org
+[2] https://www.world-stroke.org/assets/downloads/WSO_Global_Stroke_Fact_Sheet.pdf
+[3] https://towardsdatascience.com/machine-learning-basics-with-the-k-nearest-neighbors-algorithm-6a6e71d01761
+[4] https://medium.com/brasil-ai/knn-k-nearest-neighbors-1-e140c82e9c4e
+[5] https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html
+[6] https://medium.com/turing-talks/turing-talks-16-modelo-de-predição-naive-bayes-6a3e744e7986
+[7] http://www.eletrica.ufpr.br/ufpr2/professor/36/TE808/5-NaiveBayes-AM.pdf
+[8] https://www.ibm.com/cloud/learn/random-forest
+[9] https://towardsdatascience.com/understanding-random-forest-58381e0602d2
+[10] https://towardsdatascience.com/how-to-handle-imbalance-data-and-small-training-sets-in-ml-989f8053531d
