@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30, 30 )
 
-[node name="Silaba" type="Node2D"]
+[node name="Letra" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="Icon" type="Sprite" parent="."]
