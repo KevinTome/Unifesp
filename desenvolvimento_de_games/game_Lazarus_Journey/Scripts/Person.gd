@@ -2,6 +2,9 @@ extends StaticBody2D
 
 var already_interacted = false
 
+func _ready():
+	$text.visible = false
+
 func _interact_talk():
 	already_interacted = true
 	$collision.disabled = true
