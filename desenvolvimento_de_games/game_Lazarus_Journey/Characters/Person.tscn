@@ -10,9 +10,11 @@ extents = Vector2( 57, 78 )
 extents = Vector2( 16, 64.5 )
 
 [node name="Person" type="StaticBody2D"]
+collision_layer = 4
 script = ExtResource( 2 )
 
 [node name="interact_range" type="Area2D" parent="."]
+collision_layer = 4
 
 [node name="collision_range" type="CollisionShape2D" parent="interact_range"]
 position = Vector2( 0, -78 )
