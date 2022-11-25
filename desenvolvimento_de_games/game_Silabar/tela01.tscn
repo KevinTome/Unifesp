@@ -1,0 +1,249 @@
+[gd_scene load_steps=40 format=2]
+
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_02.png" type="Texture" id=1]
+[ext_resource path="res://assets/tileset/sprites_64.png" type="Texture" id=2]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_06.png" type="Texture" id=3]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_05.png" type="Texture" id=4]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_04.png" type="Texture" id=5]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_03.png" type="Texture" id=6]
+[ext_resource path="res://assets/tileset/BG.png" type="Texture" id=7]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_14.png" type="Texture" id=8]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_18.png" type="Texture" id=9]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_16.png" type="Texture" id=10]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_00.png" type="Texture" id=11]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_09.png" type="Texture" id=12]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_07.png" type="Texture" id=13]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_17.png" type="Texture" id=14]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_12.png" type="Texture" id=15]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_19.png" type="Texture" id=16]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_11.png" type="Texture" id=17]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_13.png" type="Texture" id=18]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_08.png" type="Texture" id=19]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_15.png" type="Texture" id=20]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_10.png" type="Texture" id=21]
+[ext_resource path="res://cenoura.gd" type="Script" id=22]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_01.png" type="Texture" id=23]
+[ext_resource path="res://src_letras.gd" type="Script" id=24]
+[ext_resource path="res://button.gd" type="Script" id=25]
+[ext_resource path="res://target.gd" type="Script" id=30]
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=8]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=9]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=10]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=11]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=12]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=13]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=14]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=15]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="TileSet" id=16]
+0/name = "sprites_64.png 0"
+0/texture = ExtResource( 2 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 320, 256 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 64, 64 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 7 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 7 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 8 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 2, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 9 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 10 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 11 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 2, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 12 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 3, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 13 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 4, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 14 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 3, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 15 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 23 ), ExtResource( 1 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 13 ), ExtResource( 19 ), ExtResource( 12 ), ExtResource( 21 ), ExtResource( 17 ), ExtResource( 15 ), ExtResource( 18 ), ExtResource( 8 ), ExtResource( 20 ), ExtResource( 10 ), ExtResource( 14 ), ExtResource( 9 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "default",
+"speed": 19.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 47, 53.5 )
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 322, 45.5 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_top = -209.0
+margin_right = 1282.0
+margin_bottom = 761.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 16 )
+show_collision = true
+format = 1
+tile_data = PoolIntArray( 458751, 0, 1, 393216, 0, 1, 393217, 0, 1, 393218, 0, 1, 393219, 0, 2, 393231, 0, 0, 393232, 0, 1, 393233, 0, 1, 393234, 0, 1, 393235, 0, 1, 393236, 0, 1, 458752, 0, 65537, 458753, 0, 65537, 458754, 0, 65537, 458755, 0, 65538, 458756, 0, 131075, 458757, 0, 131075, 458758, 0, 131075, 458759, 0, 131075, 458760, 0, 131075, 458761, 0, 131075, 458762, 0, 131075, 458763, 0, 131075, 458764, 0, 131075, 458765, 0, 131075, 458766, 0, 131075, 458767, 0, 65536, 458768, 0, 65537, 458769, 0, 65537, 458770, 0, 65537, 458771, 0, 65537, 524288, 0, 65537, 524289, 0, 65537, 524290, 0, 65537, 524291, 0, 65538, 524292, 0, 196611, 524293, 0, 196611, 524294, 0, 196611, 524295, 0, 196611, 524296, 0, 196611, 524297, 0, 196611, 524298, 0, 196611, 524299, 0, 196611, 524300, 0, 196611, 524301, 0, 196611, 524302, 0, 196611, 524303, 0, 65536, 524304, 0, 65537, 524305, 0, 65537, 524306, 0, 65537, 524307, 0, 65537, 589824, 0, 65537, 589825, 0, 65537, 589826, 0, 65537, 589827, 0, 65538, 589828, 0, 196611, 589829, 0, 196611, 589830, 0, 196611, 589831, 0, 196611, 589832, 0, 196611, 589833, 0, 196611, 589834, 0, 196611, 589835, 0, 196611, 589836, 0, 196611, 589837, 0, 196611, 589838, 0, 196611, 589839, 0, 65536, 589840, 0, 65537, 589841, 0, 65537, 589842, 0, 65537, 589843, 0, 65537, 655360, 0, 65537, 655361, 0, 65537, 655362, 0, 65537, 655363, 0, 65538, 655364, 0, 196611, 655365, 0, 196611, 655366, 0, 196611, 655367, 0, 196611, 655368, 0, 196611, 655369, 0, 196611, 655370, 0, 196611, 655371, 0, 196611, 655372, 0, 196611, 655373, 0, 196611, 655374, 0, 196611, 655375, 0, 65536, 655376, 0, 65537, 655377, 0, 65537, 655378, 0, 65537, 655379, 0, 65537, 720896, 0, 65537, 720897, 0, 65537, 720898, 0, 65537, 720899, 0, 65538, 720900, 0, 196611, 720901, 0, 196611, 720902, 0, 196611, 720903, 0, 196611, 720904, 0, 196611, 720905, 0, 196611, 720906, 0, 196611, 720907, 0, 196611, 720908, 0, 196611, 720909, 0, 196611, 720910, 0, 196611, 720911, 0, 65536, 720912, 0, 65537, 720913, 0, 65537, 720914, 0, 65537, 720915, 0, 65537 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+script = ExtResource( 22 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="KinematicBody2D"]
+position = Vector2( 148, -276 )
+scale = Vector2( 0.2, 0.2 )
+frames = SubResource( 5 )
+frame = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 150, -278.5 )
+shape = SubResource( 6 )
+
+[node name="DragAndDropColumns" type="HBoxContainer" parent="."]
+margin_left = 130.0
+margin_top = 488.0
+margin_right = 1152.0
+margin_bottom = 614.0
+rect_min_size = Vector2( 1022, 126 )
+
+[node name="SourceContainer" type="Panel" parent="DragAndDropColumns"]
+margin_right = 1022.0
+margin_bottom = 126.0
+rect_min_size = Vector2( 1022, 126 )
+script = ExtResource( 24 )
+
+[node name="Padding" type="MarginContainer" parent="DragAndDropColumns/SourceContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 32.0
+
+[node name="Rows" type="HBoxContainer" parent="DragAndDropColumns/SourceContainer/Padding"]
+margin_right = 990.0
+margin_bottom = 94.0
+custom_constants/separation = 15
+alignment = 1
+
+[node name="TargetContainer" type="Panel" parent="."]
+margin_left = 286.0
+margin_top = 362.0
+margin_right = 928.0
+margin_bottom = 458.0
+rect_min_size = Vector2( 0, 96 )
+script = ExtResource( 30 )
+
+[node name="Padding" type="MarginContainer" parent="TargetContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 20.0
+margin_bottom = 20.0
+
+[node name="TargetContainer" type="HBoxContainer" parent="TargetContainer/Padding"]
+margin_right = 642.0
+margin_bottom = 96.0
+custom_constants/separation = 15
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TargetContainer"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetContainer/StaticBody2D"]
+position = Vector2( 319, 47.5 )
+shape = SubResource( 17 )
+
+[node name="botao" type="Button" parent="."]
+margin_left = 1058.0
+margin_top = 33.0
+margin_right = 1234.0
+margin_bottom = 144.0
+text = "Conferir"
+script = ExtResource( 25 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 554.0
+margin_top = 18.0
+margin_right = 579.0
+margin_bottom = 49.0
+rect_scale = Vector2( 3, 3 )
+custom_colors/font_color = Color( 0.85098, 0.498039, 0.0745098, 1 )
+text = "1/6
+"
