@@ -4,12 +4,36 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+class Element {
+    public string name;
+    public string shortName;
+    public Element(string name, string shortName) {
+        this.name = name;
+        this.shortName = shortName;
+    }
+};
+
 public class ElementsRenderer : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        int totalElements = 15;
+        Element[] elements = {
+            new Element("Hidrogênio", "H"), 
+            new Element("Cloro", "Cl"), 
+            new Element("Enxofre", "S"), 
+            new Element("Carbono", "C"),
+            new Element("Nitrogênio", "N"),
+            new Element("Sódio", "Na"),
+            new Element("Lítio", "Li"),
+            new Element("Cálcio", "Ca"),
+            new Element("Oxigênio", "O"),
+            new Element("Ferro", "Fe"),
+            new Element("Alumínio", "Al"),
+            new Element("Potássio", "K"),
+            new Element("Fósforo", "P"),
+        };
+        int totalElements = elements.Length;
         int totalRows = 3;
 
         int elementsPerRow = totalElements / totalRows;
@@ -59,7 +83,7 @@ public class ElementsRenderer : MonoBehaviour
             textObj.AddComponent<CanvasRenderer> ();
             textObj.AddComponent<TextMeshProUGUI> ();
             TextMeshProUGUI tm = textObj.GetComponent<TextMeshProUGUI>();
-            tm.text = "O";
+            tm.text = elements[i].shortName;
             tm.color = new Color(255, 255, 255);
             tm.fontWeight = FontWeight.Bold;
             tm.fontSize = 50F;
@@ -77,7 +101,7 @@ public class ElementsRenderer : MonoBehaviour
             textObj2.AddComponent<CanvasRenderer> ();
             textObj2.AddComponent<TextMeshProUGUI> ();
             TextMeshProUGUI tm2 = textObj2.GetComponent<TextMeshProUGUI>();
-            tm2.text = "Oxygen";
+            tm2.text = elements[i].name;
             tm2.color = new Color(255, 255, 255);
             tm2.fontWeight = FontWeight.Bold;
             tm2.fontSize = 14F;
