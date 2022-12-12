@@ -1,0 +1,6 @@
+-> Colocar highlight no hover do elemento
+-> Tornar os elementos draggable
+-> Criar caixa de criação
+-> Renderizar o elemento formado em um texto + criar botão de resetar
+
+-> Fazer esquema de fases + vida
