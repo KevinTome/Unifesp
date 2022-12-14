@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/silabar_mus_creditos.ogg-daaa9aca2dd5a3eff4c9835bf4bdf438.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/musica/silabar_mus_creditos.ogg"
+dest_files=[ "res://.import/silabar_mus_creditos.ogg-daaa9aca2dd5a3eff4c9835bf4bdf438.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

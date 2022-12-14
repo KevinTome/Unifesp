@@ -7,7 +7,6 @@ var label: String
 # set this to true once we've been dropped on our target
 var dropped_on_target: bool = false
 
-
 func _ready() -> void:
 	add_to_group("DRAGGABLE")
 	$Label.text = label

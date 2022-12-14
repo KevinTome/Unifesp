@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_02.png" type="Texture" id=1]
 [ext_resource path="res://assets/tileset/sprites_64.png" type="Texture" id=2]
@@ -25,6 +25,8 @@
 [ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_01.png" type="Texture" id=23]
 [ext_resource path="res://src_letras.gd" type="Script" id=24]
 [ext_resource path="res://button.gd" type="Script" id=25]
+[ext_resource path="res://Scenes/AudioPlayer.tscn" type="PackedScene" id=26]
+[ext_resource path="res://tela01.gd" type="Script" id=27]
 [ext_resource path="res://target.gd" type="Script" id=30]
 
 [sub_resource type="ConvexPolygonShape2D" id=7]
@@ -146,7 +148,8 @@ extents = Vector2( 47, 53.5 )
 [sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 322, 45.5 )
 
-[node name="Node2D" type="Node2D"]
+[node name="tela01" type="Node2D"]
+script = ExtResource( 27 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_top = -209.0
@@ -247,3 +250,5 @@ rect_scale = Vector2( 3, 3 )
 custom_colors/font_color = Color( 0.85098, 0.498039, 0.0745098, 1 )
 text = "1/6
 "
+
+[node name="AudioPlayer_Overlapping" parent="." instance=ExtResource( 26 )]

@@ -5,6 +5,9 @@ var move_speed = 480
 var gravity = 1200
 var jump_force = -720
 
+func _ready():
+	$Audio/mus_gameplay.play()
+	
 func _physics_process(delta):
 	var move_direction = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
 	
