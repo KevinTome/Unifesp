@@ -8,5 +8,6 @@ func play_audio(audio_name):
 		if audio.name == audio_name:
 			var node = audio
 			node.play()
+			break
 		else:
 			print("Audio nao encontrado...")
