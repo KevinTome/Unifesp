@@ -21,8 +21,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Silabar"
-run/main_scene="res://tela01.tscn"
+run/main_scene="res://Scenes/MainScreen.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://Scripts/Global.gd"
 
 [display]
 
