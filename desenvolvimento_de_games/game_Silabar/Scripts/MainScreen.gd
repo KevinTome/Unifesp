@@ -7,7 +7,7 @@ func _ready():
 	audio_player.play_audio("mus_menu");
 
 func _on_StartButton_pressed():
-	get_tree().change_scene("res://Scenes/Teste.tscn");
+	get_tree().change_scene("res://tela01.tscn");
 
 
 func _on_ExitButton_pressed():
