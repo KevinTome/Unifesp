@@ -1,10 +1,11 @@
 extends Button
 
-onready var drop_target = get_node("../TargetContainer/Padding/TargetContainer_01")
-onready var drop_target2a = get_node("../HBoxContainer/TargetContainer2/Padding/TargetContainer_02a")
-onready var drop_target2b = get_node("../HBoxContainer/TargetContainer3/Padding/TargetContainer_02b")
-onready var c02a = get_node("../HBoxContainer/TargetContainer2/StaticBody2D/CollisionShape2D")
-onready var c02b = get_node("../HBoxContainer/TargetContainer3/StaticBody2D/CollisionShape2D")
+onready var drop_target = get_node("../UmaSilaba/Padding/ContainerAlvo_1_silaba")
+onready var drop_target_2a = get_node("../DuasSilabas/TargetContainer2/Padding/ContainerAlvo_2_silabas_a")
+onready var drop_target_2b = get_node("../DuasSilabas/TargetContainer3/Padding/ContainerAlvo_2_silabas_b")
+
+onready var c02a = get_node("../DuasSilabas/TargetContainer2/StaticBody2D/CollisionShape2D")
+onready var c02b = get_node("../DuasSilabas/TargetContainer3/StaticBody2D/CollisionShape2D")
 
 func _ready():
 	$".".connect("pressed", self, "_button_pressed")
@@ -13,7 +14,7 @@ func _ready():
 
 func _button_pressed():
 	var txt=''
-	var id = $"../OptionButton".get_selected_id() 
+	var id = $"../Opt_Silabas".get_selected_id() 
 	var btnlabel = $".".text
 	
 	if(btnlabel == "Conferir"):
@@ -24,11 +25,11 @@ func _button_pressed():
 		if(id==1):	#duas silabas
 			var s01 = ''
 			var s02 = ''
-			for _i in drop_target2a.get_children():
+			for _i in drop_target_2a.get_children():
 				print(_i.label)
 				s01+=_i.label
 		
-			for _i in drop_target2b.get_children():
+			for _i in drop_target_2b.get_children():
 				#print(_i)
 				print(_i.label)
 				s02+=_i.label

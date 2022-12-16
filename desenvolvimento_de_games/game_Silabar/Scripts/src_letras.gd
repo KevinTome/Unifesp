@@ -1,10 +1,11 @@
 extends Panel
-
+signal item_dropped_on_source(Draggable)
+var draggable: PackedScene = preload("res://Draggable.tscn")
 #class Draggable
 
-onready var drop_target = get_node("../../TargetContainer")
-onready var drop_target_2a = get_node("../../HBoxContainer/TargetContainer2")
-onready var drop_target_2b = get_node("../../HBoxContainer/TargetContainer3")
+onready var drop_target = get_node("../../UmaSilaba")
+onready var drop_target_2a = get_node("../../DuasSilabas/TargetContainer2")
+onready var drop_target_2b = get_node("../../DuasSilabas/TargetContainer3")
 onready var draggable_scene: PackedScene = preload("res://Draggable.tscn")
 onready var draggable_container = $Padding/Rows
 
@@ -48,3 +49,24 @@ func on_item_dropped_on_target(dropped_item: Draggable) -> void:
 #			drag_item.queue_free()
 #			break
 
+
+func can_drop_data(position: Vector2, data) -> bool:
+	var can_drop: bool = data is Node and data.is_in_group("DRAGGABLE")
+	print("[SourceContainer] can_drop_data has run, returning %s" % can_drop)
+	return can_drop
+
+func drop_data(position: Vector2, data) -> void:
+	print("[SourceContainer] drop_data has run")
+	print("[SourceContainer] Emiting signal: item_dropped_on_target")
+
+	var draggable_copy: TextureRect = draggable.instance()
+	draggable_copy.id = data.id
+	draggable_copy.label = data.label
+	draggable_copy.dropped_on_target = false # diable furhter dragging
+	
+	var name = $".".name
+	var source = $".".get_child(0).get_child(0)
+	print("src -> targer: ", name," -> ", draggable_container.name)
+	source.add_child(draggable_copy)
+	
+	emit_signal("item_dropped_on_source", data)

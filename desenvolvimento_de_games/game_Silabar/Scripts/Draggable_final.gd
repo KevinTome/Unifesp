@@ -16,11 +16,12 @@ func _ready() -> void:
 	$Label.text = label
 	$".".rect_scale = Vector2(0.375,0.375)
 	
+	
 func get_drag_data(_position: Vector2):
 	print("[Draggable] get_drag_data has run")
-	if not dropped_on_target:
-		set_drag_preview(_get_preview_control())
-		return self
+	#if not dropped_on_target:
+	set_drag_preview(_get_preview_control())
+	return self
 
 
 func _on_item_dropped_on_target(draggable):
