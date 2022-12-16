@@ -4,9 +4,14 @@ var draggable: PackedScene = preload("res://Draggable.tscn")
 
 #onready var tc02a = get_node("../HBoxContainer/TargetContainer3/Padding/TargetContainer_02a")
 #onready var tc02b = get_node("../HBoxContainer/TargetContainer3/Padding/TargetContainer_02b")
-onready var draggable_container_1silaba = $Padding/ContainerAlvo_1_silaba
-onready var draggable_container_2silabas_a = $"../DuasSilabas/TargetContainer2/Padding/ContainerAlvo_2_silabas_a"
-onready var draggable_container_2silabas_b = $"../DuasSilabas/TargetContainer3/Padding/ContainerAlvo_2_silabas_b"
+onready var draggable_container_1silabadraggable_container_1silaba = $ContainerAlvo_1_silaba
+
+onready var draggable_container_2silabas_a = $"../DuasSilabas/TargetContainer2/ContainerAlvo_2_silabas_a"
+onready var draggable_container_2silabas_b = $"../DuasSilabas/TargetContainer3/ContainerAlvo_2_silabas_b"
+
+onready var draggable_container_3silabas_a = $"../TresSilabas/TargetContainer1/ContainerAlvo_3_silabas_a"
+onready var draggable_container_3silabas_b = $"../TresSilabas/TargetContainer1/ContainerAlvo_3_silabas_b"
+onready var draggable_container_3silabas_c = $"../TresSilabas/TargetContainer1/ContainerAlvo_3_silabas_c"
 
 onready var sourcetarget = get_node("../ContainerOrigem/SourceContainer/Padding/Rows")
 
@@ -14,22 +19,7 @@ var id = 0
 var mouseid=-1
 
 func _ready() -> void:
-	#$".".GetChild().GetChild().GetChild().connect("MouseOver", self, "on_MouseOver")
-	#$".".get_child(0).get_child(0).connect("MouseOver", self, "on_MouseOver")
-	#sourcetarget.connect("item_dropped_on_source", self, "on_item_dropped_on_source")
-	
 	pass
-	
-func _input(event):
-	if event is InputEventMouseButton:
-		print("mouse click")
-		print(mouseid)
-		if(!(mouseid==-1)):
-			print(mouseid)
-
-func on_MouseOver(mouse_id: int) -> void:
-	mouseid = -1
-
 
 func can_drop_data(position: Vector2, data) -> bool:
 	var can_drop: bool = data is Node and data.is_in_group("DRAGGABLE")
@@ -48,11 +38,10 @@ func drop_data(position: Vector2, data) -> void:
 	print(id)
 	
 	var name = $".".name
-	var target = $".".get_child(0).get_child(0)
+	var target = $".".get_child(0)#.get_child(0)
 	print("name - childchild: ", name," -> ", target.name)
 	target.add_child(draggable_copy)
 	
-
 	emit_signal("item_dropped_on_target", data)
 
 
@@ -73,7 +62,7 @@ func _on_OptionButton_item_selected(index):
 
 func _on_SourceContainer_item_dropped_on_source(dropped_item: Draggable) -> void:
 	var name = $".".name
-	var draggable_container = $".".get_child(0).get_child(0)
+	var draggable_container = $".".get_child(0)#.get_child(0)
 	print("[source]:" ,name)
 	print("[source child]:" ,draggable_container.name)
 	

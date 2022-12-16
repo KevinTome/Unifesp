@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/silabar_mus_menu.ogg-028f6aba640b016d77f8090959f2bfdd.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/musica/silabar_mus_menu.ogg"
+dest_files=[ "res://.import/silabar_mus_menu.ogg-028f6aba640b016d77f8090959f2bfdd.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
