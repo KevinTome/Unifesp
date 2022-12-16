@@ -6,22 +6,50 @@ var draggable: PackedScene = preload("res://Draggable.tscn")
 onready var drop_target = get_node("../../UmaSilaba")
 onready var drop_target_2a = get_node("../../DuasSilabas/TargetContainer2")
 onready var drop_target_2b = get_node("../../DuasSilabas/TargetContainer3")
+onready var drop_target_3a = get_node("../../TresSilabas/TargetContainer1")
+onready var drop_target_3b = get_node("../../TresSilabas/TargetContainer2")
+onready var drop_target_3c = get_node("../../TresSilabas/TargetContainer3")
 onready var draggable_scene: PackedScene = preload("res://Draggable.tscn")
 onready var draggable_container = $Padding/Rows
 
 var dragables = [
-	#{"id": 0, "label": "-"},
-	{"id": 1, "label": "B"},
-	{"id": 2, "label": "O"},
-	{"id": 3, "label": "L"},
-	{"id": 4, "label": "A"},
-]
+			#{"id": 0, "label": "-"},
+			{"id": 1, "label": "B"},
+			{"id": 2, "label": "O"},
+			{"id": 3, "label": "L"},
+			{"id": 4, "label": "A"},
+		]
 
 func _ready() -> void:
+	var nivel = get_tree().current_scene.filename
 
+	print("NIVEL: ", nivel)
+	
+	if(nivel == "res://Niveis/nivel1_fase1.tscn"):
+		dragables = [
+			#{"id": 0, "label": "-"},
+			{"id": 1, "label": "B"},
+			{"id": 2, "label": "O"},
+			{"id": 3, "label": "L"},
+			{"id": 4, "label": "A"},
+		]
+	else: if (nivel == "res://Niveis/nivel1_fase2.tscn"):
+		dragables = [
+			#{"id": 0, "label": "-"},
+			{"id": 1, "label": "J"},
+			{"id": 2, "label": "O"},
+			{"id": 3, "label": "G"},
+			{"id": 4, "label": "O"},
+		]
+		
+		
 	drop_target.connect("item_dropped_on_target", self, "on_item_dropped_on_target")
 	drop_target_2a.connect("item_dropped_on_target", self, "on_item_dropped_on_target")
 	drop_target_2b.connect("item_dropped_on_target", self, "on_item_dropped_on_target")
+	drop_target_3a.connect("item_dropped_on_target", self, "on_item_dropped_on_target")
+	drop_target_3b.connect("item_dropped_on_target", self, "on_item_dropped_on_target")
+	drop_target_3c.connect("item_dropped_on_target", self, "on_item_dropped_on_target")
+	
 	_populate_dragables()
 
 func _populate_dragables():
