@@ -1,0 +1,192 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/tileset/BG.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/silabar_logo.gd" type="Script" id=2]
+[ext_resource path="res://assets/Wood/letter_S.png" type="Texture" id=3]
+[ext_resource path="res://assets/Wood/letter_I.png" type="Texture" id=4]
+[ext_resource path="res://assets/Wood/letter_R.png" type="Texture" id=5]
+[ext_resource path="res://assets/Wood/letter_A.png" type="Texture" id=6]
+[ext_resource path="res://assets/Wood/letter_B.png" type="Texture" id=7]
+[ext_resource path="res://assets/Wood/letter_L.png" type="Texture" id=8]
+[ext_resource path="res://assets/Wood/letter.png" type="Texture" id=9]
+[ext_resource path="res://Scripts/btn.gd" type="Script" id=11]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_top = -209.0
+margin_right = 1282.0
+margin_bottom = 761.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 1278.0
+margin_bottom = 711.0
+custom_constants/separation = 64
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 99.0
+margin_right = 1278.0
+margin_bottom = 195.0
+alignment = 1
+script = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+margin_left = 191.0
+margin_right = 287.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+size_flags_stretch_ratio = 0.5
+texture = ExtResource( 3 )
+expand = true
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+margin_left = 291.0
+margin_right = 387.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+size_flags_stretch_ratio = 0.5
+texture = ExtResource( 4 )
+expand = true
+
+[node name="TextureRect8" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+margin_left = 391.0
+margin_right = 487.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+size_flags_stretch_ratio = 0.5
+texture = ExtResource( 9 )
+expand = true
+
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+margin_left = 491.0
+margin_right = 587.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+size_flags_stretch_ratio = 0.5
+texture = ExtResource( 8 )
+expand = true
+
+[node name="TextureRect4" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+margin_left = 591.0
+margin_right = 687.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+size_flags_stretch_ratio = 0.5
+texture = ExtResource( 6 )
+expand = true
+
+[node name="TextureRect9" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+margin_left = 691.0
+margin_right = 787.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+size_flags_stretch_ratio = 0.5
+texture = ExtResource( 9 )
+expand = true
+
+[node name="TextureRect5" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+margin_left = 791.0
+margin_right = 887.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+size_flags_stretch_ratio = 0.5
+texture = ExtResource( 7 )
+expand = true
+
+[node name="TextureRect6" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+margin_left = 891.0
+margin_right = 987.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+size_flags_stretch_ratio = 0.5
+texture = ExtResource( 6 )
+expand = true
+
+[node name="TextureRect7" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+margin_left = 991.0
+margin_right = 1087.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+size_flags_stretch_ratio = 0.5
+texture = ExtResource( 5 )
+expand = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 259.0
+margin_right = 1278.0
+margin_bottom = 525.0
+custom_constants/separation = 100
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+margin_right = 1278.0
+margin_bottom = 22.0
+custom_constants/separation = 0
+alignment = 1
+
+[node name="comear" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 594.0
+margin_right = 684.0
+margin_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 90, 22 )
+text = "Começar"
+clip_text = true
+icon_align = 1
+expand_icon = true
+script = ExtResource( 11 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+margin_top = 122.0
+margin_right = 1278.0
+margin_bottom = 144.0
+custom_constants/separation = 0
+alignment = 1
+
+[node name="creditos" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 594.0
+margin_right = 684.0
+margin_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 90, 22 )
+text = "Creditos"
+icon_align = 1
+script = ExtResource( 11 )
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+margin_top = 244.0
+margin_right = 1278.0
+margin_bottom = 266.0
+custom_constants/separation = 0
+alignment = 1
+
+[node name="sair" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 594.0
+margin_right = 684.0
+margin_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 90, 22 )
+text = "Sair"
+icon_align = 1
+script = ExtResource( 11 )
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+margin_top = 589.0
+margin_right = 1278.0
+margin_bottom = 611.0
+rect_min_size = Vector2( 67, 22 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "2022"
+align = 1
+valign = 1
