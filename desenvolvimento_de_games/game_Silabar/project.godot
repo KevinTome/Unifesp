@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "TextureRect",
 "class": "Draggable",
 "language": "GDScript",
-"path": "res://Draggable_final.gd"
+"path": "res://Scripts/Draggable_final.gd"
 } ]
 _global_script_class_icons={
 "Draggable": ""

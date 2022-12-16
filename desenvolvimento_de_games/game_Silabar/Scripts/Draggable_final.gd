@@ -6,18 +6,22 @@ var id: int
 var label: String
 # set this to true once we've been dropped on our target
 var dropped_on_target: bool = false
+var mouse_id: int
 
+signal MouseOver(mouse_id)
 
 func _ready() -> void:
+	mouse_id=-1
 	add_to_group("DRAGGABLE")
 	$Label.text = label
 	$".".rect_scale = Vector2(0.375,0.375)
 	
+	
 func get_drag_data(_position: Vector2):
 	print("[Draggable] get_drag_data has run")
-	if not dropped_on_target:
-		set_drag_preview(_get_preview_control())
-		return self
+	#if not dropped_on_target:
+	set_drag_preview(_get_preview_control())
+	return self
 
 
 func _on_item_dropped_on_target(draggable):
@@ -41,3 +45,15 @@ func _get_preview_control() -> Control:
 	preview.texture = texture
 	preview.set_rotation(.1) # in readians
 	return preview
+
+
+##Monitor para ver se o mouse está em cima de qual caixa. Não funciona.
+func _on_Area_mouse_entered():
+	mouse_id=id
+	print("mouse over")
+	emit_signal("MouseOver", id)
+	
+func _on_Area_mouse_exited():
+	mouse_id=-1
+	print("mouse left")
+	emit_signal("MouseOver", id)
