@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_09.png" type="Texture" id=1]
 [ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_19.png" type="Texture" id=2]
@@ -191,6 +191,8 @@ region_rect = Rect2( 0, 0, 123, 123 )
 [sub_resource type="StyleBoxTexture" id=23]
 texture = ExtResource( 12 )
 region_rect = Rect2( 0, 0, 123, 123 )
+
+[sub_resource type="Theme" id=29]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 23 )
@@ -529,9 +531,8 @@ margin_right = 584.0
 margin_bottom = 31.0
 rect_scale = Vector2( 2, 2 )
 custom_colors/font_color = Color( 0.85098, 0.498039, 0.0745098, 1 )
-text = "Nível 1: fase 2
-\"JOGO\"
-"
+text = "Nível 1: fase 3
+\"SOL\""
 align = 1
 valign = 1
 
@@ -540,6 +541,7 @@ margin_left = 50.0
 margin_top = 422.0
 margin_right = 144.0
 margin_bottom = 468.0
+theme = SubResource( 29 )
 text = "Silabas"
 
 [node name="AudioPlayer_" parent="." instance=ExtResource( 19 )]

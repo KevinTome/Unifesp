@@ -529,9 +529,8 @@ margin_right = 584.0
 margin_bottom = 31.0
 rect_scale = Vector2( 2, 2 )
 custom_colors/font_color = Color( 0.85098, 0.498039, 0.0745098, 1 )
-text = "Nível 1: fase 2
-\"JOGO\"
-"
+text = "Nível 2: fase 1
+\"PAI\""
 align = 1
 valign = 1
 

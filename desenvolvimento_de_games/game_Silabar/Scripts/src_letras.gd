@@ -24,25 +24,77 @@ func _ready() -> void:
 	var nivel = get_tree().current_scene.filename
 
 	print("NIVEL: ", nivel)
-	
-	if(nivel == "res://Niveis/nivel1_fase1.tscn"):
-		dragables = [
-			#{"id": 0, "label": "-"},
-			{"id": 1, "label": "B"},
-			{"id": 2, "label": "O"},
-			{"id": 3, "label": "L"},
-			{"id": 4, "label": "A"},
-		]
-	else: if (nivel == "res://Niveis/nivel1_fase2.tscn"):
-		dragables = [
-			#{"id": 0, "label": "-"},
-			{"id": 1, "label": "J"},
-			{"id": 2, "label": "O"},
-			{"id": 3, "label": "G"},
-			{"id": 4, "label": "O"},
-		]
-		
-		
+	match (nivel):
+		"res://Niveis/nivel1_fase1.tscn":
+			dragables = [
+				{"id": 1, "label": "B"},
+				{"id": 2, "label": "O"},
+				{"id": 3, "label": "L"},
+				{"id": 4, "label": "A"},
+			]
+		"res://Niveis/nivel1_fase2.tscn":
+			dragables = [
+				{"id": 1, "label": "J"},
+				{"id": 2, "label": "O"},
+				{"id": 3, "label": "G"},
+				{"id": 4, "label": "O"},
+			]
+		"res://Niveis/nivel1_fase3.tscn":
+			dragables = [
+				{"id": 1, "label": "S"},
+				{"id": 2, "label": "O"},
+				{"id": 3, "label": "L"},
+			]
+		"res://Niveis/nivel2_fase1.tscn":
+			dragables = [
+				{"id": 1, "label": "P"},
+				{"id": 2, "label": "A"},
+				{"id": 3, "label": "I"},
+			]
+		"res://Niveis/nivel2_fase2.tscn":
+			dragables = [
+				{"id": 1, "label": "T"},
+				{"id": 2, "label": "E"},
+				{"id": 3, "label": "S"},
+				{"id": 4, "label": "O"},
+				{"id": 5, "label": "U"},
+				{"id": 6, "label": "R"},
+				{"id": 7, "label": "O"},
+			]
+		"res://Niveis/nivel2_fase3.tscn":
+			dragables = [
+				{"id": 1, "label": "F"},
+				{"id": 2, "label": "L"},
+				{"id": 3, "label": "O"},
+				{"id": 4, "label": "R"},
+			]
+		"res://Niveis/nivel3_fase1.tscn":
+			dragables = [
+				{"id": 1, "label": "M"},
+				{"id": 2, "label": "O"},
+				{"id": 3, "label": "C"},
+				{"id": 4, "label": "H"},
+				{"id": 5, "label": "I"},
+				{"id": 6, "label": "L"},
+				{"id": 7, "label": "A"}
+			]
+		"res://Niveis/nivel3_fase2.tscn":
+			dragables = [
+				{"id": 1, "label": "S"},
+				{"id": 2, "label": "A"},
+				{"id": 3, "label": "U"},
+				{"id": 4, "label": "D"},
+				{"id": 5, "label": "E"}
+			]
+		"res://Niveis/nivel3_fase3.tscn":
+			dragables = [
+				{"id": 1, "label": "I"},
+				{"id": 2, "label": "D"},
+				{"id": 3, "label": "E"},
+				{"id": 4, "label": "I"},
+				{"id": 5, "label": "A"}
+			]
+				
 	drop_target.connect("item_dropped_on_target", self, "on_item_dropped_on_target")
 	drop_target_2a.connect("item_dropped_on_target", self, "on_item_dropped_on_target")
 	drop_target_2b.connect("item_dropped_on_target", self, "on_item_dropped_on_target")

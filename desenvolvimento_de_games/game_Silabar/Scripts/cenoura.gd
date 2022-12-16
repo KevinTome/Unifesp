@@ -10,11 +10,6 @@ var btn_pressed = false
 
 signal saiu_da_tela()
 
-func prox_fase():
-	var nivel = get_tree().current_scene.filename
-	if(nivel == "res://Niveis/nivel1_fase1.tscn"):
-		get_tree().change_scene("res://Niveis/nivel1_fase2.tscn")
-
 func _wait(s):
 	if wait_timer.time_left <= 0.0:
 		wait_timer = get_tree().create_timer(s)
@@ -56,3 +51,27 @@ func _ready():
 
 func _on_Conferir_btn_saltar_pressed():
 	btn_pressed = true
+
+
+func prox_fase():
+	var nivel = get_tree().current_scene.filename
+	match (nivel):
+		"res://Niveis/nivel1_fase1.tscn":
+			get_tree().change_scene("res://Niveis/nivel1_fase2.tscn")
+		"res://Niveis/nivel1_fase2.tscn":
+			get_tree().change_scene("res://Niveis/nivel1_fase3.tscn")
+		"res://Niveis/nivel1_fase3.tscn":
+			get_tree().change_scene("res://Niveis/nivel2_fase1.tscn")
+		"res://Niveis/nivel2_fase1.tscn":
+			get_tree().change_scene("res://Niveis/nivel2_fase2.tscn")
+		"res://Niveis/nivel2_fase2.tscn":
+			get_tree().change_scene("res://Niveis/nivel2_fase3.tscn")
+		"res://Niveis/nivel2_fase3.tscn":
+			get_tree().change_scene("res://Niveis/nivel3_fase1.tscn")
+		"res://Niveis/nivel3_fase1.tscn":
+			get_tree().change_scene("res://Niveis/nivel3_fase2.tscn")
+		"res://Niveis/nivel3_fase2.tscn":
+			get_tree().change_scene("res://Niveis/nivel3_fase3.tscn")
+		"res://Niveis/nivel3_fase3.tscn":
+			pass
+				
