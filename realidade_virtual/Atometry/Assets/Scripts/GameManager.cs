@@ -57,17 +57,22 @@ public class GameManager : MonoBehaviour
       new List<Element>{
         new Element("Ácido Clorídrico", "-", "HCl"),
         new Element("Ácido Sulfídrico", "-", "H2S"),
-        new Element("Ácido Cianídrico", "-", "HCN")
-      },
-      /*new List<Element>{        
         new Element("Hidróxido de Sódio", "-", "NaOH"),
-        new Element("Hidróxido de Lítio", "-", "LiOH"),
-        new Element("Hidróxido de Cálcio", "-", "CaO2H2")},
+      },
       new List<Element>{
-        new Element("Cloreto de Sódio", "-", "NaCl"),
-        new Element("Sulfato de Cálcio", "-", "CaSO4"),
-        new Element("Fosfato de Cálcio", "-", "K3PO4")        
-      }*/
+        new Element("Ácido Cianídrico", "-", "HCN"),        
+        new Element("Hidróxido de Cálcio", "-", "CaO2H2"),
+        new Element("Fosfato de Cálcio", "-", "K3PO4"),
+        new Element("Sulfato de cobre I", "-", "Cu2SO4"),
+      },
+      new List<Element>{
+        new Element("Mono-hidrogeno-carbonato de sódio", "-", "NaHCO3"),          
+        new Element("Nitrito de Alumínio", "-", "AlN3O6"),
+        new Element("Hidróxido férrico", "-", "FeO3H3"),
+        new Element("Hidróxido de ferro II", "-", "FeO2H2"),
+        new Element("Ácido carbônico", "-", "H2CO3"),
+        new Element("Ácido Sulfúrico", "-", "H2SO4"),
+      }
     };
 
     UpdateGameState(GameState.NextLevel);

@@ -23,9 +23,12 @@ public class ElementsBuilder : MonoBehaviour
       new Element("Alumínio", "Al"),
       new Element("Potássio", "K"),
       new Element("Fósforo", "P"),
+      new Element("Chumbo", "Pb"),
+      new Element("Flúor", "F"),
+      new Element("Cobre", "Cu"),
     };
 
-    int totalRows = 3;
+    int totalRows = 4;
     int totalElements = elementsList.Length;
     
     int elementsPerRow = totalElements / totalRows;
@@ -37,18 +40,17 @@ public class ElementsBuilder : MonoBehaviour
       int column = i%elementsPerRow;
 
       // Get element position
-      float positionY = 0.8F + (row * 1.1F);
-      float positionX = -2F + (column * 1.1F);      
+      float positionY = 0.8F + (row * 0.9F);
+      float positionX = -4F + (column * 0.9F);
       
       // Render element
-      ElementInstance = Instantiate(ElementPrefab, new Vector3(positionX, positionY, (float)6.5), Quaternion.identity);
+      ElementInstance = Instantiate(ElementPrefab, new Vector3(positionX, positionY, (float)-4.75F), Quaternion.identity);
       ElementInstance.name = elementsList[i].shortName;
 
       // Set its color
-      Color cubeColor = new Color(0, 0, 0.312F, 1);
-      if (i%2 == 0) { cubeColor = new Color(0, 0.255F, 1, 1); };
+      Color cubeColor = new Color(0, 0.3F, 0, 1);
       ElementInstance.GetComponent<Renderer>().material.color = cubeColor;
-      ElementInstance.GetComponent<Renderer>().material.SetColor("_EmissionColor", (cubeColor * Mathf.LinearToGammaSpace(2f)));
+      ElementInstance.GetComponent<Renderer>().material.SetColor("_EmissionColor",(cubeColor * Mathf.LinearToGammaSpace(2f)));
       ElementInstance.GetComponent<Renderer>().material.DisableKeyword("_EMISSION");
 
       // Set small text
