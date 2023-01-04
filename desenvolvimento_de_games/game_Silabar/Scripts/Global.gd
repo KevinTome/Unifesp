@@ -1,6 +1,6 @@
 extends Node
 	
-onready var wordsList = {
+"""onready var wordsList = {
 	"level1": [
 			{ "id": 1, "word": ["bo", "la"]},
 			{ "id": 2, "word": ["es", "to", "jo"]}
@@ -16,11 +16,12 @@ onready var wordsList = {
 }
 	
 onready	var wordsDone = []
-onready	var currentLevel = 1;
+onready	var currentLevel = 1;"""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var currentWordsList = wordsList.currentLevel
+	pass
+	"""var currentWordsList = wordsList.currentLevel
 	
 	randomize()
 	currentWordsList.shuffle()
@@ -36,4 +37,4 @@ func _ready():
 	
 	for i in len(wholeWord):
 		dragables2[i].id = (i+1)
-		dragables2[i].label = wholeWord[i]
+		dragables2[i].label = wholeWord[i]"""

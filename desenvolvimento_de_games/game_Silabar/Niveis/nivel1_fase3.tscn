@@ -1,0 +1,558 @@
+[gd_scene load_steps=59 format=2]
+
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_09.png" type="Texture" id=1]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_19.png" type="Texture" id=2]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_07.png" type="Texture" id=3]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_17.png" type="Texture" id=4]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_08.png" type="Texture" id=5]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_15.png" type="Texture" id=6]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_11.png" type="Texture" id=7]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_01.png" type="Texture" id=8]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_13.png" type="Texture" id=9]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_12.png" type="Texture" id=10]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_10.png" type="Texture" id=11]
+[ext_resource path="res://assets/EXTRAS/reiniciar.png" type="Texture" id=12]
+[ext_resource path="res://assets/EXTRAS/SALTAR_on_yellow.png" type="Texture" id=13]
+[ext_resource path="res://assets/EXTRAS/SALTAR_off_yellow.png" type="Texture" id=14]
+[ext_resource path="res://assets/EXTRAS/SALTAR_off.png" type="Texture" id=15]
+[ext_resource path="res://assets/EXTRAS/reiniciar_SELECTED.png" type="Texture" id=16]
+[ext_resource path="res://Scripts/target.gd" type="Script" id=17]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_00.png" type="Texture" id=18]
+[ext_resource path="res://AudioPlayer.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scripts/button.gd" type="Script" id=20]
+[ext_resource path="res://Scripts/cenoura.gd" type="Script" id=21]
+[ext_resource path="res://Scripts/src_letras.gd" type="Script" id=22]
+[ext_resource path="res://Scripts/OptionButton.gd" type="Script" id=23]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_16.png" type="Texture" id=24]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_05.png" type="Texture" id=25]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_04.png" type="Texture" id=26]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_02.png" type="Texture" id=27]
+[ext_resource path="res://assets/tileset/sprites_64.png" type="Texture" id=28]
+[ext_resource path="res://assets/tileset/BG.png" type="Texture" id=29]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_06.png" type="Texture" id=30]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_03.png" type="Texture" id=31]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_14.png" type="Texture" id=32]
+[ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_18.png" type="Texture" id=33]
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=8]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=9]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=10]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=11]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=12]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=13]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=14]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=15]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="TileSet" id=16]
+0/name = "sprites_64.png 0"
+0/texture = ExtResource( 28 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 320, 256 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 64, 64 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 7 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 7 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 8 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 2, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 9 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 10 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 11 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 2, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 12 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 3, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 13 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 4, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 14 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 3, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 15 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 18 ), ExtResource( 8 ), ExtResource( 27 ), ExtResource( 31 ), ExtResource( 26 ), ExtResource( 25 ), ExtResource( 30 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 32 ), ExtResource( 6 ), ExtResource( 24 ), ExtResource( 4 ), ExtResource( 33 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 19.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 47, 53.5 )
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0, 0, 0, 0.392157 )
+
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 0, 0, 0, 0.392157 )
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 384.5, 47 )
+
+[sub_resource type="StyleBoxFlat" id=26]
+bg_color = Color( 0, 0, 0, 0.392157 )
+
+[sub_resource type="StyleBoxFlat" id=27]
+bg_color = Color( 0, 0, 0, 0.392157 )
+
+[sub_resource type="StyleBoxFlat" id=28]
+bg_color = Color( 0, 0, 0, 0.392157 )
+
+[sub_resource type="StyleBoxTexture" id=20]
+texture = ExtResource( 14 )
+region_rect = Rect2( 0, 0, 365, 295 )
+
+[sub_resource type="StyleBoxTexture" id=21]
+texture = ExtResource( 13 )
+region_rect = Rect2( 0, 0, 365, 295 )
+
+[sub_resource type="StyleBoxTexture" id=22]
+texture = ExtResource( 15 )
+region_rect = Rect2( 0, 0, 365, 295 )
+
+[sub_resource type="StyleBoxTexture" id=24]
+texture = ExtResource( 16 )
+region_rect = Rect2( 0, 0, 123, 123 )
+
+[sub_resource type="StyleBoxTexture" id=25]
+texture = ExtResource( 16 )
+region_rect = Rect2( 0, 0, 123, 123 )
+
+[sub_resource type="StyleBoxTexture" id=23]
+texture = ExtResource( 12 )
+region_rect = Rect2( 0, 0, 123, 123 )
+
+[sub_resource type="Theme" id=29]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 23 )
+
+[node name="Fundo" type="TextureRect" parent="."]
+margin_top = -209.0
+margin_right = 1282.0
+margin_bottom = 761.0
+texture = ExtResource( 29 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Cenário" type="TileMap" parent="."]
+position = Vector2( -1, 0 )
+tile_set = SubResource( 16 )
+show_collision = true
+format = 1
+tile_data = PoolIntArray( 458751, 0, 1, 393216, 0, 1, 393217, 0, 1, 393218, 0, 1, 393219, 0, 2, 393232, 0, 1, 393233, 0, 1, 393234, 0, 1, 393235, 0, 1, 393236, 0, 1, 458752, 0, 65537, 458753, 0, 65537, 458754, 0, 65537, 458755, 0, 65538, 458756, 0, 131075, 458757, 0, 131075, 458758, 0, 131075, 458759, 0, 131075, 458760, 0, 131075, 458761, 0, 131075, 458762, 0, 131075, 458763, 0, 131075, 458764, 0, 131075, 458765, 0, 131075, 458766, 0, 131075, 458767, 0, 131075, 458768, 0, 65537, 458769, 0, 65537, 458770, 0, 65537, 458771, 0, 65537, 524288, 0, 65537, 524289, 0, 65537, 524290, 0, 65537, 524291, 0, 65538, 524292, 0, 196611, 524293, 0, 196611, 524294, 0, 196611, 524295, 0, 196611, 524296, 0, 196611, 524297, 0, 196611, 524298, 0, 196611, 524299, 0, 196611, 524300, 0, 196611, 524301, 0, 196611, 524302, 0, 196611, 524303, 0, 196611, 524304, 0, 65537, 524305, 0, 65537, 524306, 0, 65537, 524307, 0, 65537, 589824, 0, 65537, 589825, 0, 65537, 589826, 0, 65537, 589827, 0, 65538, 589828, 0, 196611, 589829, 0, 196611, 589830, 0, 196611, 589831, 0, 196611, 589832, 0, 196611, 589833, 0, 196611, 589834, 0, 196611, 589835, 0, 196611, 589836, 0, 196611, 589837, 0, 196611, 589838, 0, 196611, 589839, 0, 196611, 589840, 0, 65537, 589841, 0, 65537, 589842, 0, 65537, 589843, 0, 65537, 655360, 0, 65537, 655361, 0, 65537, 655362, 0, 65537, 655363, 0, 65538, 655364, 0, 196611, 655365, 0, 196611, 655366, 0, 196611, 655367, 0, 196611, 655368, 0, 196611, 655369, 0, 196611, 655370, 0, 196611, 655371, 0, 196611, 655372, 0, 196611, 655373, 0, 196611, 655374, 0, 196611, 655375, 0, 196611, 655376, 0, 65537, 655377, 0, 65537, 655378, 0, 65537, 655379, 0, 65537, 720896, 0, 65537, 720897, 0, 65537, 720898, 0, 65537, 720899, 0, 65538, 720900, 0, 196611, 720901, 0, 196611, 720902, 0, 196611, 720903, 0, 196611, 720904, 0, 196611, 720905, 0, 196611, 720906, 0, 196611, 720907, 0, 196611, 720908, 0, 196611, 720909, 0, 196611, 720910, 0, 196611, 720911, 0, 196611, 720912, 0, 65537, 720913, 0, 65537, 720914, 0, 65537, 720915, 0, 65537 )
+
+[node name="Personagem" type="KinematicBody2D" parent="."]
+script = ExtResource( 21 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Personagem"]
+position = Vector2( 168, 48 )
+scale = Vector2( 0.2, 0.2 )
+frames = SubResource( 5 )
+frame = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Personagem"]
+position = Vector2( 166, 53 )
+shape = SubResource( 6 )
+
+[node name="ContainerOrigem" type="HBoxContainer" parent="."]
+margin_left = 130.0
+margin_top = 488.0
+margin_right = 1152.0
+margin_bottom = 614.0
+rect_min_size = Vector2( 1022, 126 )
+
+[node name="SourceContainer" type="Panel" parent="ContainerOrigem"]
+margin_right = 1022.0
+margin_bottom = 126.0
+rect_min_size = Vector2( 1022, 126 )
+custom_styles/panel = SubResource( 18 )
+script = ExtResource( 22 )
+
+[node name="Padding" type="MarginContainer" parent="ContainerOrigem/SourceContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 32.0
+
+[node name="Rows" type="HBoxContainer" parent="ContainerOrigem/SourceContainer/Padding"]
+margin_right = 990.0
+margin_bottom = 94.0
+custom_constants/separation = 15
+alignment = 1
+
+[node name="Rows" type="HBoxContainer" parent="ContainerOrigem/SourceContainer"]
+visible = false
+margin_right = 990.0
+margin_bottom = 94.0
+custom_constants/separation = 15
+alignment = 1
+
+[node name="UmaSilaba" type="Panel" parent="."]
+visible = false
+margin_left = 286.0
+margin_top = 362.0
+margin_right = 928.0
+margin_bottom = 458.0
+rect_min_size = Vector2( 0, 96 )
+custom_styles/panel = SubResource( 19 )
+script = ExtResource( 17 )
+
+[node name="ContainerAlvo_1_silaba" type="HBoxContainer" parent="UmaSilaba"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 642.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 0, 99 )
+custom_constants/separation = 15
+alignment = 1
+
+[node name="Padding" type="MarginContainer" parent="UmaSilaba"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 21.0
+margin_right = 20.0
+margin_bottom = -70.0
+
+[node name="ContainerAlvo_1_silaba" type="HBoxContainer" parent="UmaSilaba/Padding"]
+margin_right = 642.0
+margin_bottom = 5.0
+custom_constants/separation = 15
+
+[node name="StaticBody2D" type="StaticBody2D" parent="UmaSilaba"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UmaSilaba/StaticBody2D"]
+position = Vector2( 352.5, 47.5 )
+shape = SubResource( 17 )
+
+[node name="DuasSilabas" type="HBoxContainer" parent="."]
+margin_left = 268.0
+margin_top = 361.0
+margin_right = 998.0
+margin_bottom = 460.0
+rect_min_size = Vector2( 730, 99 )
+custom_constants/separation = 80
+alignment = 1
+
+[node name="TargetContainer2" type="Panel" parent="DuasSilabas"]
+margin_left = 45.0
+margin_right = 325.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 280, 96 )
+custom_styles/panel = SubResource( 19 )
+script = ExtResource( 17 )
+
+[node name="ContainerAlvo_2_silabas_a" type="HBoxContainer" parent="DuasSilabas/TargetContainer2"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 280.0
+margin_bottom = 101.0
+rect_min_size = Vector2( 280, 99 )
+custom_constants/separation = 15
+alignment = 1
+
+[node name="Padding" type="CenterContainer" parent="DuasSilabas/TargetContainer2"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 21.0
+margin_right = -1.0
+margin_bottom = -14.0
+
+[node name="ContainerAlvo_2_silabas_a" type="HBoxContainer" parent="DuasSilabas/TargetContainer2/Padding"]
+margin_left = 139.0
+margin_top = 32.0
+margin_right = 139.0
+margin_bottom = 32.0
+custom_constants/separation = 15
+
+[node name="StaticBody2D" type="StaticBody2D" parent="DuasSilabas/TargetContainer2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuasSilabas/TargetContainer2/StaticBody2D"]
+position = Vector2( 293, 47.5 )
+shape = SubResource( 17 )
+disabled = true
+
+[node name="TargetContainer3" type="Panel" parent="DuasSilabas"]
+margin_left = 405.0
+margin_right = 685.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 280, 96 )
+custom_styles/panel = SubResource( 19 )
+script = ExtResource( 17 )
+
+[node name="ContainerAlvo_2_silabas_b" type="HBoxContainer" parent="DuasSilabas/TargetContainer3"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 280.0
+margin_bottom = 102.0
+rect_min_size = Vector2( 280, 99 )
+custom_constants/separation = 15
+alignment = 1
+
+[node name="Padding" type="CenterContainer" parent="DuasSilabas/TargetContainer3"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 21.0
+margin_right = -27.0
+margin_bottom = -14.0
+
+[node name="ContainerAlvo_2_silabas_b" type="HBoxContainer" parent="DuasSilabas/TargetContainer3/Padding"]
+margin_left = 125.0
+margin_top = 32.0
+margin_right = 125.0
+margin_bottom = 32.0
+custom_constants/separation = 15
+
+[node name="StaticBody2D" type="StaticBody2D" parent="DuasSilabas/TargetContainer3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuasSilabas/TargetContainer3/StaticBody2D"]
+position = Vector2( -4, 48 )
+shape = SubResource( 17 )
+disabled = true
+
+[node name="TresSilabas" type="HBoxContainer" parent="."]
+anchor_right = 21.0
+margin_left = 268.0
+margin_top = 361.0
+margin_right = 998.0
+margin_bottom = 460.0
+rect_min_size = Vector2( 730, 99 )
+alignment = 1
+
+[node name="TargetContainer1" type="Panel" parent="TresSilabas"]
+margin_left = 31.0
+margin_right = 251.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 220, 99 )
+custom_styles/panel = SubResource( 26 )
+script = ExtResource( 17 )
+
+[node name="ContainerAlvo_3_silabas_a" type="HBoxContainer" parent="TresSilabas/TargetContainer1"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 221.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 220, 99 )
+custom_constants/separation = 15
+alignment = 1
+
+[node name="Padding" type="CenterContainer" parent="TresSilabas/TargetContainer1"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 28.0
+margin_right = -2.0
+margin_bottom = -7.0
+
+[node name="ContainerAlvo_3_silabas_a" type="HBoxContainer" parent="TresSilabas/TargetContainer1/Padding"]
+margin_left = 108.0
+margin_top = 32.0
+margin_right = 108.0
+margin_bottom = 32.0
+custom_constants/separation = 15
+
+[node name="TargetContainer2" type="Panel" parent="TresSilabas"]
+margin_left = 255.0
+margin_right = 475.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 220, 99 )
+custom_styles/panel = SubResource( 27 )
+script = ExtResource( 17 )
+
+[node name="ContainerAlvo_3_silabas_b" type="HBoxContainer" parent="TresSilabas/TargetContainer2"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 221.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 220, 99 )
+custom_constants/separation = 15
+alignment = 1
+
+[node name="Padding" type="CenterContainer" parent="TresSilabas/TargetContainer2"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 31.0
+margin_right = -1.0
+margin_bottom = -3.0
+
+[node name="ContainerAlvo_3_silabas_b" type="HBoxContainer" parent="TresSilabas/TargetContainer2/Padding"]
+margin_left = 109.0
+margin_top = 32.0
+margin_right = 109.0
+margin_bottom = 32.0
+custom_constants/separation = 15
+
+[node name="TargetContainer3" type="Panel" parent="TresSilabas"]
+margin_left = 479.0
+margin_right = 699.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 220, 99 )
+custom_styles/panel = SubResource( 28 )
+script = ExtResource( 17 )
+
+[node name="ContainerAlvo_3_silabas_c" type="HBoxContainer" parent="TresSilabas/TargetContainer3"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 222.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 220, 99 )
+custom_constants/separation = 15
+alignment = 1
+
+[node name="Padding" type="CenterContainer" parent="TresSilabas/TargetContainer3"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 30.0
+margin_right = -1.0
+margin_bottom = -5.0
+
+[node name="ContainerAlvo_3_silabas_c" type="HBoxContainer" parent="TresSilabas/TargetContainer3/Padding"]
+margin_left = 109.0
+margin_top = 32.0
+margin_right = 109.0
+margin_bottom = 32.0
+custom_constants/separation = 15
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TresSilabas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TresSilabas/StaticBody2D"]
+position = Vector2( 370.5, 50 )
+shape = SubResource( 17 )
+disabled = true
+
+[node name="Conferir" type="Button" parent="."]
+margin_left = 1041.0
+margin_top = 1.0
+margin_right = 1248.0
+margin_bottom = 142.0
+custom_styles/hover = SubResource( 20 )
+custom_styles/pressed = SubResource( 21 )
+custom_styles/normal = SubResource( 22 )
+script = ExtResource( 20 )
+
+[node name="Reiniciar" type="Button" parent="."]
+margin_left = 28.0
+margin_top = 17.0
+margin_right = 117.0
+margin_bottom = 94.0
+custom_styles/hover = SubResource( 24 )
+custom_styles/pressed = SubResource( 25 )
+custom_styles/normal = SubResource( 23 )
+script = ExtResource( 20 )
+
+[node name="Nível" type="Label" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 493.0
+margin_top = 17.0
+margin_right = 584.0
+margin_bottom = 31.0
+rect_scale = Vector2( 2, 2 )
+custom_colors/font_color = Color( 0.85098, 0.498039, 0.0745098, 1 )
+text = "Nível 1: fase 3
+\"SOL\""
+align = 1
+valign = 1
+
+[node name="Opt_Silabas" type="OptionButton" parent="."]
+margin_left = 50.0
+margin_top = 422.0
+margin_right = 144.0
+margin_bottom = 468.0
+theme = SubResource( 29 )
+text = "Silabas"
+
+[node name="AudioPlayer_" parent="." instance=ExtResource( 19 )]
+
+[connection signal="saiu_da_tela" from="Personagem" to="." method="_on_Personagem_saiu_da_tela"]
+[connection signal="item_dropped_on_source" from="ContainerOrigem/SourceContainer" to="UmaSilaba" method="_on_SourceContainer_item_dropped_on_source"]
+[connection signal="item_dropped_on_source" from="ContainerOrigem/SourceContainer" to="DuasSilabas/TargetContainer2" method="_on_SourceContainer_item_dropped_on_source"]
+[connection signal="item_dropped_on_source" from="ContainerOrigem/SourceContainer" to="DuasSilabas/TargetContainer3" method="_on_SourceContainer_item_dropped_on_source"]
+[connection signal="item_dropped_on_source" from="ContainerOrigem/SourceContainer" to="TresSilabas/TargetContainer1" method="_on_SourceContainer_item_dropped_on_source"]
+[connection signal="item_dropped_on_source" from="ContainerOrigem/SourceContainer" to="TresSilabas/TargetContainer2" method="_on_SourceContainer_item_dropped_on_source"]
+[connection signal="item_dropped_on_source" from="ContainerOrigem/SourceContainer" to="TresSilabas/TargetContainer3" method="_on_SourceContainer_item_dropped_on_source"]
+[connection signal="btn_saltar_pressed" from="Conferir" to="Personagem" method="_on_Conferir_btn_saltar_pressed"]
+[connection signal="item_selected" from="Opt_Silabas" to="." method="_on_OptionButton_item_selected"]
+[connection signal="item_selected" from="Opt_Silabas" to="DuasSilabas/TargetContainer2" method="_on_OptionButton_item_selected"]

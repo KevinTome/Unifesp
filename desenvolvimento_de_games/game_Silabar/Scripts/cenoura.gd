@@ -2,44 +2,76 @@ extends KinematicBody2D
 
 const GRAVITY = 1200.0
 const WALK_SPEED = 400
+var wait_timer
 
 var velocity = Vector2()
 
+var btn_pressed = false
+
+signal saiu_da_tela()
+
+func _wait(s):
+	if wait_timer.time_left <= 0.0:
+		wait_timer = get_tree().create_timer(s)
+		print("Esperando...")
+		yield(wait_timer, "timeout")
+		prox_fase()
+		print("pronto...")
+
 func _physics_process(delta):
+	var pos_y = $".".get_position()[1]
+	var pos_x = $".".get_position()[0]
+	
+	
+	if(pos_y>=1000):
+		get_tree().reload_current_scene()
+	
 	if(!is_on_floor()):
-		velocity.y += delta * 1.5 *GRAVITY	
-	else:
-		if Input.is_action_pressed("ui_up"):
+			velocity.y += delta * 1.5 *GRAVITY	
+	
+	if(btn_pressed):
+		if(!is_on_floor()):
+			velocity.y += delta * 1.5 *GRAVITY	
+		else:
 			velocity.y = -1.2*WALK_SPEED
-	
-	
 
-	if Input.is_action_pressed("ui_left"):
-		velocity.x = -WALK_SPEED
-		get_node("AnimatedSprite").set_flip_h(false)
-	elif Input.is_action_pressed("ui_right"):
-		velocity.x =  WALK_SPEED
+		if(pos_x >= 1000):
+			velocity.x = 0
+			_wait(2)
+			#print("Próxima fase")
+		else:
+			velocity.x =  WALK_SPEED
 		get_node("AnimatedSprite").set_flip_h(true)
-	else:
-		velocity.x = 0
 
-	# We don't need to multiply velocity by delta because "move_and_slide" already takes delta time into account.
-
-	# The second parameter of "move_and_slide" is the normal pointing up.
-	# In the case of a 2D platformer, in Godot, upward is negative y, which translates to -1 as a normal.
-# warning-ignore:return_value_discarded
 	move_and_slide(velocity, Vector2(0, -1))
-	
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	wait_timer = get_tree().create_timer(0.0)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_Conferir_btn_saltar_pressed():
+	btn_pressed = true
+
+
+func prox_fase():
+	var nivel = get_tree().current_scene.filename
+	match (nivel):
+		"res://Niveis/nivel1_fase1.tscn":
+			get_tree().change_scene("res://Niveis/nivel1_fase2.tscn")
+		"res://Niveis/nivel1_fase2.tscn":
+			get_tree().change_scene("res://Niveis/nivel1_fase3.tscn")
+		"res://Niveis/nivel1_fase3.tscn":
+			get_tree().change_scene("res://Niveis/nivel2_fase1.tscn")
+		"res://Niveis/nivel2_fase1.tscn":
+			get_tree().change_scene("res://Niveis/nivel2_fase2.tscn")
+		"res://Niveis/nivel2_fase2.tscn":
+			get_tree().change_scene("res://Niveis/nivel2_fase3.tscn")
+		"res://Niveis/nivel2_fase3.tscn":
+			get_tree().change_scene("res://Niveis/nivel3_fase1.tscn")
+		"res://Niveis/nivel3_fase1.tscn":
+			get_tree().change_scene("res://Niveis/nivel3_fase2.tscn")
+		"res://Niveis/nivel3_fase2.tscn":
+			get_tree().change_scene("res://Niveis/nivel3_fase3.tscn")
+		"res://Niveis/nivel3_fase3.tscn":
+			pass
+				
