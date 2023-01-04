@@ -4774,7 +4774,7 @@ GameObject:
   - component: {fileID: 1687379091}
   - component: {fileID: 1687379090}
   m_Layer: 5
-  m_Name: FeedbackLabel
+  m_Name: FeedbackText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
