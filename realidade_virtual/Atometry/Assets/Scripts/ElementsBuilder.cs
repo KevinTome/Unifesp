@@ -3,14 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-class Element {
-  public string name;
-  public string shortName;
-  public Element(string name, string shortName) {
-    this.name = name;
-    this.shortName = shortName;
-  }
-};
 public class ElementsBuilder : MonoBehaviour
 {
   public GameObject ElementPrefab;
@@ -49,12 +41,15 @@ public class ElementsBuilder : MonoBehaviour
       float positionX = -2F + (column * 1.1F);      
       
       // Render element
-      ElementInstance = Instantiate(ElementPrefab, new Vector3(positionX, positionY, (float)4.5), Quaternion.identity);
+      ElementInstance = Instantiate(ElementPrefab, new Vector3(positionX, positionY, (float)6.5), Quaternion.identity);
+      ElementInstance.name = elementsList[i].shortName;
 
       // Set its color
       Color cubeColor = new Color(0, 0, 0.312F, 1);
       if (i%2 == 0) { cubeColor = new Color(0, 0.255F, 1, 1); };
       ElementInstance.GetComponent<Renderer>().material.color = cubeColor;
+      ElementInstance.GetComponent<Renderer>().material.SetColor("_EmissionColor", (cubeColor * Mathf.LinearToGammaSpace(2f)));
+      ElementInstance.GetComponent<Renderer>().material.DisableKeyword("_EMISSION");
 
       // Set small text
       ElementInstance.transform.Find("Canvas/Text(Small)").GetComponent<TextMeshProUGUI>().text = elementsList[i].shortName;
