@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+ using UnityEngine.UI;
 using TMPro;
 
 class Element {
@@ -30,16 +31,39 @@ public class GameManager : MonoBehaviour
   public GameState State;
   public static event Action<GameState> OnGameStateChanged;
 
+  private string[] scores = {
+    "F",
+    "D-",
+    "D",
+    "D+",
+    "C-",
+    "C",
+    "C+",
+    "B-",
+    "B",
+    "B+",
+    "A-",
+    "A",
+    "A+",
+  };
+
   // External references
   private static GameObject LevelLabel;
   private static GameObject CurrentWordLabel;
   private static GameObject CurrentPlayerWordLabel;
+  private static GameObject CurrentWordsDoneLevelLabel;
+  private static GameObject ScoreLabel;
+  private static GameObject FeedbackLabel;
+  private static GameObject FeedbackPanel;
+  private static GameObject InGamePanel;
+  private static GameObject SummaryPanel;
 
   // State variables
-  private static int currentLevel = 0;
-  private static int currentLevelWordsDone = 0;
+  private static int currentLevel = 1;
+  private static int currentLevelWordsDone = -1;
   private static List<ElementCounter> currentPlayerWord;
   private static List<List<Element>> wordsList;
+  private static int successAnswers = 0;
   
   void Awake() {
     Instance = this;
@@ -50,6 +74,13 @@ public class GameManager : MonoBehaviour
     LevelLabel = GameObject.Find("CurrentLevelText");
     CurrentWordLabel = GameObject.Find("CurrentWordText");
     CurrentPlayerWordLabel = GameObject.Find("CurrentPlayerWordText");
+    CurrentWordsDoneLevelLabel = GameObject.Find("CurrentWordsDoneLevelText");
+    ScoreLabel = GameObject.Find("ScoreText");
+    FeedbackPanel = GameObject.Find("FeedbackPanel");
+    InGamePanel = GameObject.Find("InGamePanel");
+    SummaryPanel = GameObject.Find("SummaryPanel");
+    FeedbackLabel = GameObject.Find("FeedbackText");
+    SummaryPanel.SetActive(false);
 
     currentPlayerWord = new List<ElementCounter>();
     wordsList = new List<List<Element>>{
@@ -57,17 +88,22 @@ public class GameManager : MonoBehaviour
       new List<Element>{
         new Element("Ácido Clorídrico", "-", "HCl"),
         new Element("Ácido Sulfídrico", "-", "H2S"),
-        new Element("Ácido Cianídrico", "-", "HCN")
-      },
-      /*new List<Element>{        
         new Element("Hidróxido de Sódio", "-", "NaOH"),
-        new Element("Hidróxido de Lítio", "-", "LiOH"),
-        new Element("Hidróxido de Cálcio", "-", "CaO2H2")},
+      },
+     new List<Element>{
+        new Element("Ácido Cianídrico", "-", "HCN"),        
+        new Element("Hidróxido de Cálcio", "-", "CaO2H2"),
+        new Element("Fosfato de Cálcio", "-", "K3PO4"),
+        new Element("Sulfato de cobre I", "-", "Cu2SO4"),
+      },
       new List<Element>{
-        new Element("Cloreto de Sódio", "-", "NaCl"),
-        new Element("Sulfato de Cálcio", "-", "CaSO4"),
-        new Element("Fosfato de Cálcio", "-", "K3PO4")        
-      }*/
+        new Element("Mono-hidrogeno-carbonato de sódio", "-", "NaHCO3"),          
+        new Element("Nitrito de Alumínio", "-", "AlN3O6"),
+        new Element("Hidróxido férrico", "-", "FeO3H3"),
+        new Element("Hidróxido de ferro II", "-", "FeO2H2"),
+        new Element("Ácido carbônico", "-", "H2CO3"),
+        new Element("Ácido Sulfúrico", "-", "H2SO4"),
+      }
     };
 
     UpdateGameState(GameState.NextLevel);
@@ -104,15 +140,20 @@ public class GameManager : MonoBehaviour
 
     if(currentLevelWordsDone == wordsList[currentLevel].Count) { // Go to next level
 
-      if(currentLevel == (wordsList.Count - 1)) {
-        Debug.Log("Game ended");
+      if(currentLevel == (wordsList.Count - 1)) { // Game is over
+        InGamePanel.SetActive(false);
+        SummaryPanel.SetActive(true);
+
+        ScoreLabel.GetComponent<TextMeshProUGUI>().text = scores[successAnswers];
+        FeedbackLabel.GetComponent<TextMeshProUGUI>().text = (successAnswers > 6) ? "Parabéns!" : "Tente novamente...";
         return;
       }
       currentLevel++;
       currentLevelWordsDone = 0;
-      LevelLabel.GetComponent<TextMeshProUGUI>().text = currentLevel.ToString();
     }
-    
+
+    LevelLabel.GetComponent<TextMeshProUGUI>().text = currentLevel.ToString();
+    CurrentWordsDoneLevelLabel.GetComponent<TextMeshProUGUI>().text =  currentLevelWordsDone.ToString() + "/" + wordsList[currentLevel].Count;
     UpdateGameState(GameState.NextWord);
   }
 
@@ -144,13 +185,42 @@ public class GameManager : MonoBehaviour
     string answer = string.Join("", elements);
 
     if(wordsList[currentLevel][currentLevelWordsDone].formula == answer) {
-      UpdateGameState(GameState.NextLevel);
+      StartCoroutine(fade(new Color(0, 0, 0, 0), new Color(0, 2, 0, 0.1F), 0.4F));
+      StartCoroutine(fade(new Color(0, 2, 0, 0.1F), new Color(0, 0, 0, 0), 0.4F));
+
+      successAnswers++;
+    } else {
+      StartCoroutine(fade(new Color(0, 0, 0, 0), new Color(2, 0, 0, 0.1F), 0.4F));
+      StartCoroutine(fade(new Color(2, 0, 0, 0.1F), new Color(0, 0, 0, 0), 0.4F));
     }
+
+    UpdateGameState(GameState.NextLevel);
    }
 
+  private IEnumerator fade(Color startValue, Color endValue, float duration){
+    float time = 0.0f;
+    while (time < duration){
+      FeedbackPanel.GetComponent<Image>().color = Color.Lerp(startValue, endValue, time/duration);
+      time += Time.deltaTime;
+        yield return null;
+    }
+    FeedbackPanel.GetComponent<Image>().color = endValue;
+  }
   public void ResetAnswer() {
     currentPlayerWord.Clear();
     updateCurrentAnswerUI();
+  }
+
+  public void Restart() {
+    currentLevel = 1;
+    currentLevelWordsDone = -1;
+    currentPlayerWord.Clear();
+    successAnswers = 0;
+
+    InGamePanel.SetActive(true);
+    SummaryPanel.SetActive(false);
+    updateCurrentAnswerUI();
+    UpdateGameState(GameState.NextLevel);
   }
 
 

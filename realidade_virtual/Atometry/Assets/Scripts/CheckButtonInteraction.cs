@@ -17,4 +17,13 @@ public class CheckButtonInteraction : MonoBehaviour
   public void OnReset() {
     GameManager.ResetAnswer();
   }  
+
+  public void OnRestart() {
+    GameManager.Restart();
+  }
+
+  public void OnExit() {
+    Application.Quit();
+    UnityEditor.EditorApplication.isPlaying = false;
+  }
 }
