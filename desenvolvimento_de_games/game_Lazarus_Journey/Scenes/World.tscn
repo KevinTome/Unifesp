@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/Player2.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Items/money_bag.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Items/clothes.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Characters/Person.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Items/food.tscn" type="PackedScene" id=6]
+[ext_resource path="res://TileSets/ExampleTileSet.tres" type="TileSet" id=7]
+[ext_resource path="res://Scenes/WorldComplete.tscn" type="PackedScene" id=8]
+
+[node name="World" type="Node"]
+
+[node name="Person" parent="." instance=ExtResource( 4 )]
+position = Vector2( 392, 384 )
+collision_mask = 11
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+visible = false
+position = Vector2( 232, 142 )
+
+[node name="food" parent="." instance=ExtResource( 6 )]
+position = Vector2( 472, 368 )
+scale = Vector2( 0.36, 0.36 )
+
+[node name="clothes" parent="." instance=ExtResource( 3 )]
+position = Vector2( 640, 344 )
+
+[node name="money_bag" parent="." instance=ExtResource( 2 )]
+position = Vector2( 560, 328 )
+
+[node name="Player2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 120, 352 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 589848, 0, 0, 589849, 1, 0, 589850, 2, 0, 655366, 0, 0, 655367, 1, 0, 655368, 1, 0, 655369, 1, 0, 655384, 3, 0, 655385, 4, 0, 655386, 5, 0, 720902, 3, 0, 720903, 4, 0, 720904, 4, 0, 720905, 5, 0, 720920, 3, 0, 720921, 4, 0, 720922, 5, 0, 786434, 0, 0, 786435, 1, 0, 786436, 1, 0, 786437, 1, 0, 786438, 1, 0, 786439, 1, 0, 786440, 1, 0, 786441, 1, 0, 786442, 1, 0, 786443, 1, 0, 786444, 1, 0, 786445, 1, 0, 786446, 1, 0, 786447, 1, 0, 786448, 1, 0, 786449, 1, 0, 786450, 1, 0, 786451, 1, 0, 786452, 1, 0, 786453, 1, 0, 786454, 1, 0, 786455, 1, 0, 786456, 1, 0, 786457, 1, 0, 786458, 1, 0, 786459, 1, 0, 786460, 1, 0, 786461, 2, 0, 851970, 3, 0, 851971, 4, 0, 851972, 4, 0, 851973, 4, 0, 851974, 4, 0, 851975, 4, 0, 851976, 4, 0, 851977, 4, 0, 851978, 4, 0, 851979, 4, 0, 851980, 4, 0, 851981, 4, 0, 851982, 4, 0, 851983, 4, 0, 851984, 4, 0, 851985, 4, 0, 851986, 4, 0, 851987, 4, 0, 851988, 4, 0, 851989, 4, 0, 851990, 4, 0, 851991, 4, 0, 851992, 4, 0, 851993, 4, 0, 851994, 4, 0, 851995, 4, 0, 851996, 4, 0, 851997, 5, 0, 917506, 6, 0, 917507, 7, 0, 917508, 7, 0, 917509, 7, 0, 917510, 7, 0, 917511, 7, 0, 917512, 7, 0, 917513, 7, 0, 917514, 7, 0, 917515, 7, 0, 917516, 7, 0, 917517, 7, 0, 917518, 7, 0, 917519, 7, 0, 917520, 7, 0, 917521, 7, 0, 917522, 7, 0, 917523, 7, 0, 917524, 7, 0, 917525, 7, 0, 917526, 7, 0, 917527, 7, 0, 917528, 7, 0, 917529, 7, 0, 917530, 7, 0, 917531, 7, 0, 917532, 7, 0, 917533, 8, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="WorldComplete" parent="." instance=ExtResource( 8 )]
+position = Vector2( 896, 304 )
+next_world = "res://Scenes/World2.tscn"
