@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/tileset/BG.png" type="Texture" id=1]
-[ext_resource path="res://Scripts/silabar_logo.gd" type="Script" id=2]
 [ext_resource path="res://assets/Wood/letter_S.png" type="Texture" id=3]
 [ext_resource path="res://assets/Wood/letter_I.png" type="Texture" id=4]
 [ext_resource path="res://assets/Wood/letter_R.png" type="Texture" id=5]
@@ -9,9 +8,9 @@
 [ext_resource path="res://assets/Wood/letter_B.png" type="Texture" id=7]
 [ext_resource path="res://assets/Wood/letter_L.png" type="Texture" id=8]
 [ext_resource path="res://assets/Wood/letter.png" type="Texture" id=9]
-[ext_resource path="res://Scripts/menu.gd" type="Script" id=10]
+[ext_resource path="res://Scripts/Menu.gd" type="Script" id=10]
 [ext_resource path="res://Scripts/btn.gd" type="Script" id=11]
-[ext_resource path="res://AudioPlayer.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/AudioPlayer.tscn" type="PackedScene" id=12]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 10 )
@@ -38,7 +37,6 @@ margin_top = 99.0
 margin_right = 1278.0
 margin_bottom = 195.0
 alignment = 1
-script = ExtResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
 margin_left = 191.0
@@ -194,4 +192,4 @@ text = "2022"
 align = 1
 valign = 1
 
-[node name="AudioPlayer_Override" parent="." instance=ExtResource( 12 )]
+[node name="AudioPlayer_Overlapping" parent="." instance=ExtResource( 12 )]

@@ -11,6 +11,6 @@ func _button_pressed():
 		"Sair":
 			get_tree().quit()
 		"Começar":
-			get_tree().change_scene("res://Niveis/nivel1_fase1.tscn")			
+			get_tree().change_scene("res://Scenes/InGame.tscn")			
 		"Creditos":
 			get_tree().change_scene("res://Scenes/Credits.tscn")

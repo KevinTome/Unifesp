@@ -13,6 +13,7 @@ onready var c02b = get_node("../DuasSilabas/TargetContainer3/StaticBody2D/Collis
 onready var c03a = get_node("../TresSilabas/StaticBody2D/CollisionShape2D")
 
 signal btn_saltar_pressed()
+signal check_answer
 
 func _ready():
 	$".".connect("pressed", self, "_button_pressed")
@@ -20,36 +21,13 @@ func _ready():
 	
 
 func _button_pressed():
-	var txt=''
-	var id = $"../Opt_Silabas".get_selected_id() 
-	
+	var id = $"../SilabasOptionButton".get_selected_id() 
 	var btnlabel = $".".name
+	
 	if(btnlabel == "Reiniciar"):
 		get_tree().reload_current_scene()
 	
-	var nivel = get_tree().current_scene.filename
-	if(btnlabel == "Conferir"):
-		emit_signal("btn_saltar_pressed")
-		match (nivel):
-			"res://Niveis/nivel1_fase1.tscn":
-				_conferir_nivel_1_fase_1(btnlabel, id)
-			"res://Niveis/nivel1_fase2.tscn":
-				_conferir_nivel_1_fase_2(btnlabel, id)
-			"res://Niveis/nivel1_fase3.tscn":
-				_conferir_nivel_1_fase_3(btnlabel, id)
-			"res://Niveis/nivel2_fase1.tscn":
-				_conferir_nivel_2_fase_1(btnlabel, id)
-			"res://Niveis/nivel2_fase2.tscn":
-				_conferir_nivel_2_fase_2(btnlabel, id)
-			"res://Niveis/nivel2_fase3.tscn":
-				_conferir_nivel_2_fase_3(btnlabel, id)
-			"res://Niveis/nivel3_fase1.tscn":
-				_conferir_nivel_3_fase_1(btnlabel, id)
-			"res://Niveis/nivel3_fase2.tscn":
-				_conferir_nivel_3_fase_2(btnlabel, id)
-			"res://Niveis/nivel3_fase3.tscn":
-				_conferir_nivel_3_fase_3(btnlabel, id)
-					
+	emit_signal("check_answer")			
 	
 
 func _conferir_nivel_1_fase_1(btnlabel, id):
@@ -72,6 +50,7 @@ func _conferir_nivel_1_fase_1(btnlabel, id):
 		
 		if(s01 == "BO" && s02 == "LA"):
 			#usuário acertou
+			emit_signal("correct_answer")
 			c02a.disabled = false
 			c02b.disabled = false
 	

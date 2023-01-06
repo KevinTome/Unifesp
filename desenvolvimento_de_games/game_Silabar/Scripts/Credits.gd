@@ -7,4 +7,4 @@ func _ready():
 	audio_player.play_audio("mus_credit")
 
 func _on_BackButton_pressed():
-	get_tree().change_scene("res://menu.tscn")
+	get_tree().change_scene("res://Scenes/Menu.tscn")

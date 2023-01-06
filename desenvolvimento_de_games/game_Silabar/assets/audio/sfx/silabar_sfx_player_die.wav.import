@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/silabar_sfx_player_die.wav-ba81e9f664a509725e4e7a6bede3e267.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/silabar_sfx_player_die.wav"
+dest_files=[ "res://.import/silabar_sfx_player_die.wav-ba81e9f664a509725e4e7a6bede3e267.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

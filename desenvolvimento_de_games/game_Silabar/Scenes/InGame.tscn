@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_09.png" type="Texture" id=1]
 [ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_19.png" type="Texture" id=2]
@@ -16,13 +16,13 @@
 [ext_resource path="res://assets/EXTRAS/SALTAR_off_yellow.png" type="Texture" id=14]
 [ext_resource path="res://assets/EXTRAS/SALTAR_off.png" type="Texture" id=15]
 [ext_resource path="res://assets/EXTRAS/reiniciar_SELECTED.png" type="Texture" id=16]
-[ext_resource path="res://Scripts/target.gd" type="Script" id=17]
+[ext_resource path="res://Scripts/SilabasOptionButton.gd" type="Script" id=17]
 [ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_00.png" type="Texture" id=18]
-[ext_resource path="res://AudioPlayer.tscn" type="PackedScene" id=19]
-[ext_resource path="res://Scripts/button.gd" type="Script" id=20]
-[ext_resource path="res://Scripts/cenoura.gd" type="Script" id=21]
-[ext_resource path="res://Scripts/src_letras.gd" type="Script" id=22]
-[ext_resource path="res://Scripts/OptionButton.gd" type="Script" id=23]
+[ext_resource path="res://Scenes/AudioPlayer.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scripts/ConferirButton.gd" type="Script" id=20]
+[ext_resource path="res://Scripts/Cenoura.gd" type="Script" id=21]
+[ext_resource path="res://Scripts/SourceContainer.gd" type="Script" id=22]
+[ext_resource path="res://Scripts/InGame.gd" type="Script" id=23]
 [ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_16.png" type="Texture" id=24]
 [ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_05.png" type="Texture" id=25]
 [ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_04.png" type="Texture" id=26]
@@ -33,6 +33,9 @@
 [ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_03.png" type="Texture" id=31]
 [ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_14.png" type="Texture" id=32]
 [ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_18.png" type="Texture" id=33]
+[ext_resource path="res://Scripts/GameManager.gd" type="Script" id=34]
+[ext_resource path="res://Scripts/UIController.gd" type="Script" id=35]
+[ext_resource path="res://Scripts/TargetArea.gd" type="Script" id=36]
 
 [sub_resource type="ConvexPolygonShape2D" id=7]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -153,21 +156,6 @@ extents = Vector2( 47, 53.5 )
 [sub_resource type="StyleBoxFlat" id=18]
 bg_color = Color( 0, 0, 0, 0.392157 )
 
-[sub_resource type="StyleBoxFlat" id=19]
-bg_color = Color( 0, 0, 0, 0.392157 )
-
-[sub_resource type="RectangleShape2D" id=17]
-extents = Vector2( 384.5, 47 )
-
-[sub_resource type="StyleBoxFlat" id=26]
-bg_color = Color( 0, 0, 0, 0.392157 )
-
-[sub_resource type="StyleBoxFlat" id=27]
-bg_color = Color( 0, 0, 0, 0.392157 )
-
-[sub_resource type="StyleBoxFlat" id=28]
-bg_color = Color( 0, 0, 0, 0.392157 )
-
 [sub_resource type="StyleBoxTexture" id=20]
 texture = ExtResource( 14 )
 region_rect = Rect2( 0, 0, 365, 295 )
@@ -192,10 +180,15 @@ region_rect = Rect2( 0, 0, 123, 123 )
 texture = ExtResource( 12 )
 region_rect = Rect2( 0, 0, 123, 123 )
 
-[sub_resource type="Theme" id=29]
-
-[node name="Node2D" type="Node2D"]
+[node name="InGame" type="Node2D"]
 script = ExtResource( 23 )
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource( 34 )
+current_level_and_sublevel = [ 1, 1 ]
+
+[node name="UIController" type="Node" parent="."]
+script = ExtResource( 35 )
 
 [node name="Fundo" type="TextureRect" parent="."]
 margin_top = -209.0
@@ -261,246 +254,6 @@ margin_bottom = 94.0
 custom_constants/separation = 15
 alignment = 1
 
-[node name="UmaSilaba" type="Panel" parent="."]
-visible = false
-margin_left = 286.0
-margin_top = 362.0
-margin_right = 928.0
-margin_bottom = 458.0
-rect_min_size = Vector2( 0, 96 )
-custom_styles/panel = SubResource( 19 )
-script = ExtResource( 17 )
-
-[node name="ContainerAlvo_1_silaba" type="HBoxContainer" parent="UmaSilaba"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 642.0
-margin_bottom = 99.0
-rect_min_size = Vector2( 0, 99 )
-custom_constants/separation = 15
-alignment = 1
-
-[node name="Padding" type="MarginContainer" parent="UmaSilaba"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 20.0
-margin_top = 21.0
-margin_right = 20.0
-margin_bottom = -70.0
-
-[node name="ContainerAlvo_1_silaba" type="HBoxContainer" parent="UmaSilaba/Padding"]
-margin_right = 642.0
-margin_bottom = 5.0
-custom_constants/separation = 15
-
-[node name="StaticBody2D" type="StaticBody2D" parent="UmaSilaba"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UmaSilaba/StaticBody2D"]
-position = Vector2( 352.5, 47.5 )
-shape = SubResource( 17 )
-
-[node name="DuasSilabas" type="HBoxContainer" parent="."]
-margin_left = 268.0
-margin_top = 361.0
-margin_right = 998.0
-margin_bottom = 460.0
-rect_min_size = Vector2( 730, 99 )
-custom_constants/separation = 80
-alignment = 1
-
-[node name="TargetContainer2" type="Panel" parent="DuasSilabas"]
-margin_left = 45.0
-margin_right = 325.0
-margin_bottom = 99.0
-rect_min_size = Vector2( 280, 96 )
-custom_styles/panel = SubResource( 19 )
-script = ExtResource( 17 )
-
-[node name="ContainerAlvo_2_silabas_a" type="HBoxContainer" parent="DuasSilabas/TargetContainer2"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 280.0
-margin_bottom = 101.0
-rect_min_size = Vector2( 280, 99 )
-custom_constants/separation = 15
-alignment = 1
-
-[node name="Padding" type="CenterContainer" parent="DuasSilabas/TargetContainer2"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 21.0
-margin_right = -1.0
-margin_bottom = -14.0
-
-[node name="ContainerAlvo_2_silabas_a" type="HBoxContainer" parent="DuasSilabas/TargetContainer2/Padding"]
-margin_left = 139.0
-margin_top = 32.0
-margin_right = 139.0
-margin_bottom = 32.0
-custom_constants/separation = 15
-
-[node name="StaticBody2D" type="StaticBody2D" parent="DuasSilabas/TargetContainer2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuasSilabas/TargetContainer2/StaticBody2D"]
-position = Vector2( 293, 47.5 )
-shape = SubResource( 17 )
-disabled = true
-
-[node name="TargetContainer3" type="Panel" parent="DuasSilabas"]
-margin_left = 405.0
-margin_right = 685.0
-margin_bottom = 99.0
-rect_min_size = Vector2( 280, 96 )
-custom_styles/panel = SubResource( 19 )
-script = ExtResource( 17 )
-
-[node name="ContainerAlvo_2_silabas_b" type="HBoxContainer" parent="DuasSilabas/TargetContainer3"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 280.0
-margin_bottom = 102.0
-rect_min_size = Vector2( 280, 99 )
-custom_constants/separation = 15
-alignment = 1
-
-[node name="Padding" type="CenterContainer" parent="DuasSilabas/TargetContainer3"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 2.0
-margin_top = 21.0
-margin_right = -27.0
-margin_bottom = -14.0
-
-[node name="ContainerAlvo_2_silabas_b" type="HBoxContainer" parent="DuasSilabas/TargetContainer3/Padding"]
-margin_left = 125.0
-margin_top = 32.0
-margin_right = 125.0
-margin_bottom = 32.0
-custom_constants/separation = 15
-
-[node name="StaticBody2D" type="StaticBody2D" parent="DuasSilabas/TargetContainer3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuasSilabas/TargetContainer3/StaticBody2D"]
-position = Vector2( -4, 48 )
-shape = SubResource( 17 )
-disabled = true
-
-[node name="TresSilabas" type="HBoxContainer" parent="."]
-anchor_right = 21.0
-margin_left = 268.0
-margin_top = 361.0
-margin_right = 998.0
-margin_bottom = 460.0
-rect_min_size = Vector2( 730, 99 )
-alignment = 1
-
-[node name="TargetContainer1" type="Panel" parent="TresSilabas"]
-margin_left = 31.0
-margin_right = 251.0
-margin_bottom = 99.0
-rect_min_size = Vector2( 220, 99 )
-custom_styles/panel = SubResource( 26 )
-script = ExtResource( 17 )
-
-[node name="ContainerAlvo_3_silabas_a" type="HBoxContainer" parent="TresSilabas/TargetContainer1"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 221.0
-margin_bottom = 99.0
-rect_min_size = Vector2( 220, 99 )
-custom_constants/separation = 15
-alignment = 1
-
-[node name="Padding" type="CenterContainer" parent="TresSilabas/TargetContainer1"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 2.0
-margin_top = 28.0
-margin_right = -2.0
-margin_bottom = -7.0
-
-[node name="ContainerAlvo_3_silabas_a" type="HBoxContainer" parent="TresSilabas/TargetContainer1/Padding"]
-margin_left = 108.0
-margin_top = 32.0
-margin_right = 108.0
-margin_bottom = 32.0
-custom_constants/separation = 15
-
-[node name="TargetContainer2" type="Panel" parent="TresSilabas"]
-margin_left = 255.0
-margin_right = 475.0
-margin_bottom = 99.0
-rect_min_size = Vector2( 220, 99 )
-custom_styles/panel = SubResource( 27 )
-script = ExtResource( 17 )
-
-[node name="ContainerAlvo_3_silabas_b" type="HBoxContainer" parent="TresSilabas/TargetContainer2"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 221.0
-margin_bottom = 99.0
-rect_min_size = Vector2( 220, 99 )
-custom_constants/separation = 15
-alignment = 1
-
-[node name="Padding" type="CenterContainer" parent="TresSilabas/TargetContainer2"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 31.0
-margin_right = -1.0
-margin_bottom = -3.0
-
-[node name="ContainerAlvo_3_silabas_b" type="HBoxContainer" parent="TresSilabas/TargetContainer2/Padding"]
-margin_left = 109.0
-margin_top = 32.0
-margin_right = 109.0
-margin_bottom = 32.0
-custom_constants/separation = 15
-
-[node name="TargetContainer3" type="Panel" parent="TresSilabas"]
-margin_left = 479.0
-margin_right = 699.0
-margin_bottom = 99.0
-rect_min_size = Vector2( 220, 99 )
-custom_styles/panel = SubResource( 28 )
-script = ExtResource( 17 )
-
-[node name="ContainerAlvo_3_silabas_c" type="HBoxContainer" parent="TresSilabas/TargetContainer3"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 222.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 220, 99 )
-custom_constants/separation = 15
-alignment = 1
-
-[node name="Padding" type="CenterContainer" parent="TresSilabas/TargetContainer3"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 30.0
-margin_right = -1.0
-margin_bottom = -5.0
-
-[node name="ContainerAlvo_3_silabas_c" type="HBoxContainer" parent="TresSilabas/TargetContainer3/Padding"]
-margin_left = 109.0
-margin_top = 32.0
-margin_right = 109.0
-margin_bottom = 32.0
-custom_constants/separation = 15
-
-[node name="StaticBody2D" type="StaticBody2D" parent="TresSilabas"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TresSilabas/StaticBody2D"]
-position = Vector2( 370.5, 50 )
-shape = SubResource( 17 )
-disabled = true
-
 [node name="Conferir" type="Button" parent="."]
 margin_left = 1041.0
 margin_top = 1.0
@@ -525,34 +278,34 @@ script = ExtResource( 20 )
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 493.0
-margin_top = 17.0
-margin_right = 584.0
-margin_bottom = 31.0
+margin_left = 531.0
+margin_top = 20.0
+margin_right = 622.0
+margin_bottom = 51.0
 rect_scale = Vector2( 2, 2 )
 custom_colors/font_color = Color( 0.85098, 0.498039, 0.0745098, 1 )
-text = "Nível 1: fase 3
-\"SOL\""
+text = "Nível -"
 align = 1
 valign = 1
 
-[node name="Opt_Silabas" type="OptionButton" parent="."]
+[node name="SilabasOptionButton" type="OptionButton" parent="."]
 margin_left = 50.0
 margin_top = 422.0
 margin_right = 144.0
 margin_bottom = 468.0
-theme = SubResource( 29 )
 text = "Silabas"
+script = ExtResource( 17 )
 
 [node name="AudioPlayer_" parent="." instance=ExtResource( 19 )]
 
+[node name="TargetArea" type="HBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 36 )
+
+[connection signal="current_level_and_sublevel" from="GameManager" to="UIController" method="_on_GameManager_current_level_and_sublevel"]
+[connection signal="set_current_word" from="GameManager" to="ContainerOrigem/SourceContainer" method="_on_GameManager_set_current_word"]
+[connection signal="set_current_word" from="GameManager" to="SilabasOptionButton" method="_on_GameManager_set_current_word"]
 [connection signal="saiu_da_tela" from="Personagem" to="." method="_on_Personagem_saiu_da_tela"]
-[connection signal="item_dropped_on_source" from="ContainerOrigem/SourceContainer" to="UmaSilaba" method="_on_SourceContainer_item_dropped_on_source"]
-[connection signal="item_dropped_on_source" from="ContainerOrigem/SourceContainer" to="DuasSilabas/TargetContainer2" method="_on_SourceContainer_item_dropped_on_source"]
-[connection signal="item_dropped_on_source" from="ContainerOrigem/SourceContainer" to="DuasSilabas/TargetContainer3" method="_on_SourceContainer_item_dropped_on_source"]
-[connection signal="item_dropped_on_source" from="ContainerOrigem/SourceContainer" to="TresSilabas/TargetContainer1" method="_on_SourceContainer_item_dropped_on_source"]
-[connection signal="item_dropped_on_source" from="ContainerOrigem/SourceContainer" to="TresSilabas/TargetContainer2" method="_on_SourceContainer_item_dropped_on_source"]
-[connection signal="item_dropped_on_source" from="ContainerOrigem/SourceContainer" to="TresSilabas/TargetContainer3" method="_on_SourceContainer_item_dropped_on_source"]
 [connection signal="btn_saltar_pressed" from="Conferir" to="Personagem" method="_on_Conferir_btn_saltar_pressed"]
-[connection signal="item_selected" from="Opt_Silabas" to="." method="_on_OptionButton_item_selected"]
-[connection signal="item_selected" from="Opt_Silabas" to="DuasSilabas/TargetContainer2" method="_on_OptionButton_item_selected"]
+[connection signal="item_selected" from="SilabasOptionButton" to="TargetArea" method="_on_SilabasOptionButton_item_selected"]
