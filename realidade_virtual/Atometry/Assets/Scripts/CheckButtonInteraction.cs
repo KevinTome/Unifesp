@@ -8,6 +8,7 @@ public class CheckButtonInteraction : MonoBehaviour
   GameObject WelcomePanel;
   GameObject GoToTutorialButton;
   ObjectManager ObjectManager;
+  public AudioSource clickAudio;
 
   public void Start() {
     ObjectManager = GameObject.Find("ObjectManager").GetComponent<ObjectManager>();
@@ -36,9 +37,11 @@ public class CheckButtonInteraction : MonoBehaviour
   }
 
   public void StartGameClick() {
-    ObjectManager.MainCamera.GetComponent<ElementsBuilder>().enabled = true;
+    clickAudio.Play();
+    ObjectManager.MainCamera.GetComponent<ElementsBuilder>().Render();
     ObjectManager.MenuCanvas.SetActive(false);
     ObjectManager.InGameCanvas.SetActive(true);
+    GameManager.timer[1] = 1;
   }
 
   public void OnExit() {

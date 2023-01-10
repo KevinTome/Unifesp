@@ -18,9 +18,13 @@ public class ObjectManager : MonoBehaviour
     public static GameObject GoToTutorialButton;
     public static GameObject MainCamera;
     public static GameObject MenuCanvas;
-    public static GameObject FeedbackPanel;
+    public static GameObject FeedbackAnswerPanel;
     public static GameObject ScoreText;
     public static GameObject FeedbackText;
+    public static GameObject TimerText;
+    public static GameObject SummaryTimerText;
+    public static GameObject FeedbackCanvas;
+    public static GameObject FeedbackAnswersText;
 
     void Awake() {
         Instance = this;
@@ -40,14 +44,20 @@ public class ObjectManager : MonoBehaviour
         GoToTutorialButton = GameObject.Find("GoToTutorialButton");
         MainCamera = GameObject.Find("Main Camera");
         MenuCanvas = GameObject.Find("MenuCanvas");
-        FeedbackPanel = GameObject.Find("FeedbackPanel");
+        FeedbackAnswerPanel = GameObject.Find("FeedbackAnswerPanel");
         ScoreText = GameObject.Find("ScoreText");
         FeedbackText = GameObject.Find("FeedbackText");
+        TimerText = GameObject.Find("TimerText");
+        SummaryTimerText = GameObject.Find("SummaryTimerText");
+        FeedbackCanvas = GameObject.Find("FeedbackCanvas");
+        FeedbackAnswersText = GameObject.Find("FeedbackAnswersText");
 
         SummaryPanel.SetActive(false);
         InGameCanvas.SetActive(false);
 
         TutorialPanel.SetActive(false);
         StartGameButton.SetActive(false);
+
+        FeedbackCanvas.SetActive(false);
     }
 }
