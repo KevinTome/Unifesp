@@ -1104,6 +1104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d26df364365288429fa525561e47733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickAudio: {fileID: 0}
 --- !u!114 &161426029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4077,6 +4078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d26df364365288429fa525561e47733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickAudio: {fileID: 0}
 --- !u!114 &874753913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5852,6 +5854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d26df364365288429fa525561e47733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickAudio: {fileID: 6384431531231741825, guid: 71de45fd2f21151448ffad4674f27b96, type: 3}
 --- !u!114 &1530695885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5896,18 +5899,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6384431531231741825, guid: 71de45fd2f21151448ffad4674f27b96, type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1530695884}
         m_TargetAssemblyTypeName: CheckButtonInteraction, Assembly-CSharp
         m_MethodName: StartGameClick
@@ -7797,6 +7788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d26df364365288429fa525561e47733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickAudio: {fileID: 0}
 --- !u!114 &1869207366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8307,6 +8299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d26df364365288429fa525561e47733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickAudio: {fileID: 0}
 --- !u!82 &1897699673
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8456,6 +8449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d26df364365288429fa525561e47733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickAudio: {fileID: 0}
 --- !u!114 &1927796592
 MonoBehaviour:
   m_ObjectHideFlags: 0
