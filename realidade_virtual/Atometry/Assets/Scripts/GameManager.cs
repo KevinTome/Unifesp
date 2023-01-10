@@ -48,15 +48,7 @@ public class GameManager : MonoBehaviour
   };
 
   // External references
-  private static GameObject LevelLabel;
-  private static GameObject CurrentWordLabel;
-  private static GameObject CurrentPlayerWordLabel;
-  private static GameObject CurrentWordsDoneLevelLabel;
-  private static GameObject ScoreLabel;
-  private static GameObject FeedbackLabel;
-  private static GameObject FeedbackPanel;
-  private static GameObject InGamePanel;
-  private static GameObject SummaryPanel;
+  ObjectManager ObjectManager;
 
   // State variables
   private static int currentLevel = 1;
@@ -71,16 +63,7 @@ public class GameManager : MonoBehaviour
 
   void Start() {
     // Set external references
-    LevelLabel = GameObject.Find("CurrentLevelText");
-    CurrentWordLabel = GameObject.Find("CurrentWordText");
-    CurrentPlayerWordLabel = GameObject.Find("CurrentPlayerWordText");
-    CurrentWordsDoneLevelLabel = GameObject.Find("CurrentWordsDoneLevelText");
-    ScoreLabel = GameObject.Find("ScoreText");
-    FeedbackPanel = GameObject.Find("FeedbackPanel");
-    InGamePanel = GameObject.Find("InGamePanel");
-    SummaryPanel = GameObject.Find("SummaryPanel");
-    FeedbackLabel = GameObject.Find("FeedbackText");
-    SummaryPanel.SetActive(false);
+    ObjectManager = GameObject.Find("ObjectManager").GetComponent<ObjectManager>();
 
     currentPlayerWord = new List<ElementCounter>();
     wordsList = new List<List<Element>>{
@@ -141,25 +124,25 @@ public class GameManager : MonoBehaviour
     if(currentLevelWordsDone == wordsList[currentLevel].Count) { // Go to next level
 
       if(currentLevel == (wordsList.Count - 1)) { // Game is over
-        InGamePanel.SetActive(false);
-        SummaryPanel.SetActive(true);
+        ObjectManager.InGamePanel.SetActive(false);
+        ObjectManager.SummaryPanel.SetActive(true);
 
-        ScoreLabel.GetComponent<TextMeshProUGUI>().text = scores[successAnswers];
-        FeedbackLabel.GetComponent<TextMeshProUGUI>().text = (successAnswers > 6) ? "Parabéns!" : "Tente novamente...";
+        ObjectManager.ScoreText.GetComponent<TextMeshProUGUI>().text = scores[successAnswers];
+        ObjectManager.FeedbackText.GetComponent<TextMeshProUGUI>().text = (successAnswers > 6) ? "Parabéns!" : "Tente novamente...";
         return;
       }
       currentLevel++;
       currentLevelWordsDone = 0;
     }
 
-    LevelLabel.GetComponent<TextMeshProUGUI>().text = currentLevel.ToString();
-    CurrentWordsDoneLevelLabel.GetComponent<TextMeshProUGUI>().text =  currentLevelWordsDone.ToString() + "/" + wordsList[currentLevel].Count;
+    ObjectManager.CurrentLevelText.GetComponent<TextMeshProUGUI>().text = currentLevel.ToString();
+    ObjectManager.CurrentWordsDoneLevelText.GetComponent<TextMeshProUGUI>().text =  currentLevelWordsDone.ToString() + "/" + wordsList[currentLevel].Count;
     UpdateGameState(GameState.NextWord);
   }
 
    private void HandleNextWord() {
     // Update current word label
-    CurrentWordLabel.GetComponent<TextMeshProUGUI>().text = wordsList[currentLevel][currentLevelWordsDone].name;
+    ObjectManager.CurrentWordText.GetComponent<TextMeshProUGUI>().text = wordsList[currentLevel][currentLevelWordsDone].name;
     UpdateGameState(GameState.PlayerTurn);
    }
 
@@ -177,7 +160,7 @@ public class GameManager : MonoBehaviour
 
    private void updateCurrentAnswerUI() {
     var elements = currentPlayerWord.Select(elementCounter => (elementCounter.shortName+(elementCounter.amount > 1 ? elementCounter.amount : ""))).ToArray();
-    CurrentPlayerWordLabel.GetComponent<TextMeshProUGUI>().text = string.Join("", elements);
+    ObjectManager.CurrentPlayerWordText.GetComponent<TextMeshProUGUI>().text = string.Join("", elements);
    }
 
    public void CheckAnswer() {
@@ -200,11 +183,11 @@ public class GameManager : MonoBehaviour
   private IEnumerator fade(Color startValue, Color endValue, float duration){
     float time = 0.0f;
     while (time < duration){
-      FeedbackPanel.GetComponent<Image>().color = Color.Lerp(startValue, endValue, time/duration);
+      ObjectManager.FeedbackPanel.GetComponent<Image>().color = Color.Lerp(startValue, endValue, time/duration);
       time += Time.deltaTime;
         yield return null;
     }
-    FeedbackPanel.GetComponent<Image>().color = endValue;
+    ObjectManager.FeedbackPanel.GetComponent<Image>().color = endValue;
   }
   public void ResetAnswer() {
     currentPlayerWord.Clear();
@@ -217,8 +200,8 @@ public class GameManager : MonoBehaviour
     currentPlayerWord.Clear();
     successAnswers = 0;
 
-    InGamePanel.SetActive(true);
-    SummaryPanel.SetActive(false);
+    ObjectManager.InGamePanel.SetActive(true);
+    ObjectManager.SummaryPanel.SetActive(false);
     updateCurrentAnswerUI();
     UpdateGameState(GameState.NextLevel);
   }
