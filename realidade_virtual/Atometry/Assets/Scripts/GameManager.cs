@@ -10,10 +10,12 @@ class Element {
   public string name;
   public string shortName;
   public string formula;
+  public int isDone; // 1, 0, -1
   public Element(string name, string shortName, string formula = "") {
     this.name = name;
     this.shortName = shortName;
     this.formula = formula;
+    this.isDone = 0;
   }
 };
 
@@ -27,6 +29,7 @@ class ElementCounter {
 };
 public class GameManager : MonoBehaviour
 {
+  private static System.Random rng = new System.Random();
   public static GameManager Instance;
   public GameState State;
   public static event Action<GameState> OnGameStateChanged;
@@ -48,22 +51,18 @@ public class GameManager : MonoBehaviour
   };
 
   // External references
-  private static GameObject LevelLabel;
-  private static GameObject CurrentWordLabel;
-  private static GameObject CurrentPlayerWordLabel;
-  private static GameObject CurrentWordsDoneLevelLabel;
-  private static GameObject ScoreLabel;
-  private static GameObject FeedbackLabel;
-  private static GameObject FeedbackPanel;
-  private static GameObject InGamePanel;
-  private static GameObject SummaryPanel;
+  ObjectManager ObjectManager;
+  public AudioSource successAudio;
+  public AudioSource failureAudio;
 
   // State variables
   private static int currentLevel = 1;
   private static int currentLevelWordsDone = -1;
-  private static List<ElementCounter> currentPlayerWord;
+  private static List<ElementCounter> currentPlayerAnswer;
   private static List<List<Element>> wordsList;
   private static int successAnswers = 0;
+  public static float[] timer = {0, 0};
+  private static int[] totalWordsPerLevel = {0, 3, 4, 6};
   
   void Awake() {
     Instance = this;
@@ -71,29 +70,26 @@ public class GameManager : MonoBehaviour
 
   void Start() {
     // Set external references
-    LevelLabel = GameObject.Find("CurrentLevelText");
-    CurrentWordLabel = GameObject.Find("CurrentWordText");
-    CurrentPlayerWordLabel = GameObject.Find("CurrentPlayerWordText");
-    CurrentWordsDoneLevelLabel = GameObject.Find("CurrentWordsDoneLevelText");
-    ScoreLabel = GameObject.Find("ScoreText");
-    FeedbackPanel = GameObject.Find("FeedbackPanel");
-    InGamePanel = GameObject.Find("InGamePanel");
-    SummaryPanel = GameObject.Find("SummaryPanel");
-    FeedbackLabel = GameObject.Find("FeedbackText");
-    SummaryPanel.SetActive(false);
+    ObjectManager = GameObject.Find("ObjectManager").GetComponent<ObjectManager>();
 
-    currentPlayerWord = new List<ElementCounter>();
+    currentPlayerAnswer = new List<ElementCounter>();
+
     wordsList = new List<List<Element>>{
       new List<Element>{new Element("", "", "")},
       new List<Element>{
         new Element("Ácido Clorídrico", "-", "HCl"),
         new Element("Ácido Sulfídrico", "-", "H2S"),
         new Element("Hidróxido de Sódio", "-", "NaOH"),
+        new Element("Hidróxido de Lítio", "-", "LiOH"),
+        new Element("Cloreto de Sódio", "-", "NaCl"),
+        new Element("Sulfato de Cálcio", "-", "CaSO4"),
       },
      new List<Element>{
-        new Element("Ácido Cianídrico", "-", "HCN"),        
+        new Element("Ácido Cianídrico", "-", "HCN"),
+        new Element("Ácido Nítrico", "-", "HNO3"),
         new Element("Hidróxido de Cálcio", "-", "CaO2H2"),
-        new Element("Fosfato de Cálcio", "-", "K3PO4"),
+        new Element("Hidróxido de Alumínio", "-", "AlO3H3"),
+        new Element("Fosfato de Potássio", "-", "K3PO4"),
         new Element("Sulfato de cobre I", "-", "Cu2SO4"),
       },
       new List<Element>{
@@ -134,64 +130,109 @@ public class GameManager : MonoBehaviour
     OnGameStateChanged?.Invoke(newState);  
   }
 
+  private static string GetFeedbackText() {
+    string finalText = "";
+
+    var doneWordsList = new List<List<Element>>(wordsList);
+
+    for (int i = 1; i < doneWordsList.Count; i++){
+      doneWordsList[i] = doneWordsList[i].FindAll((el) => el.isDone != 0);
+    }
+
+    for (int j = 1; j < doneWordsList.Count; j++) {
+      finalText = finalText + "\nLevel" + j + "\n";
+      for (int k = 0; k < totalWordsPerLevel[j]; k++)
+      {
+        finalText = finalText + "\n" + doneWordsList[j][k].name + "(" + doneWordsList[j][k].formula + ")" + " - " + (doneWordsList[j][k].isDone == 1 ? "Acertou" : "Errou");
+      }
+      finalText = finalText + "\n-------------------------------------------------------------";
+    }
+    
+    return finalText;
+  }
   private void HandleNextLevel() {
     ResetAnswer();
     currentLevelWordsDone++;
 
-    if(currentLevelWordsDone == wordsList[currentLevel].Count) { // Go to next level
+    if(currentLevelWordsDone == totalWordsPerLevel[currentLevel]) { // Go to next level
 
       if(currentLevel == (wordsList.Count - 1)) { // Game is over
-        InGamePanel.SetActive(false);
-        SummaryPanel.SetActive(true);
+        timer[1] = 0;
+        ObjectManager.InGamePanel.SetActive(false);
+        ObjectManager.SummaryPanel.SetActive(true);
+        ObjectManager.FeedbackCanvas.SetActive(true);
 
-        ScoreLabel.GetComponent<TextMeshProUGUI>().text = scores[successAnswers];
-        FeedbackLabel.GetComponent<TextMeshProUGUI>().text = (successAnswers > 6) ? "Parabéns!" : "Tente novamente...";
+        Destroy(ObjectManager.MainCamera.GetComponent<ElementsBuilder>().ElementsGroup);
+
+        ObjectManager.ScoreText.GetComponent<TextMeshProUGUI>().text = scores[successAnswers];
+        ObjectManager.FeedbackText.GetComponent<TextMeshProUGUI>().text = (successAnswers > 6) ? "Parabéns!" : "Tente novamente...";
+
+        ObjectManager.FeedbackAnswersText.GetComponent<TextMeshProUGUI>().text = GetFeedbackText();
+        
+        TimeSpan time = TimeSpan.FromSeconds(timer[0]);
+        ObjectManager.SummaryTimerText.GetComponent<TextMeshProUGUI>().text = time.ToString("mm':'ss");
         return;
       }
       currentLevel++;
       currentLevelWordsDone = 0;
     }
 
-    LevelLabel.GetComponent<TextMeshProUGUI>().text = currentLevel.ToString();
-    CurrentWordsDoneLevelLabel.GetComponent<TextMeshProUGUI>().text =  currentLevelWordsDone.ToString() + "/" + wordsList[currentLevel].Count;
+    ObjectManager.CurrentLevelText.GetComponent<TextMeshProUGUI>().text = currentLevel.ToString();
+    ObjectManager.CurrentWordsDoneLevelText.GetComponent<TextMeshProUGUI>().text = (currentLevelWordsDone+1).ToString() + "/" +  totalWordsPerLevel[currentLevel];
     UpdateGameState(GameState.NextWord);
   }
 
    private void HandleNextWord() {
+    // 1. Dar shuffle no currentLevel da wordsList
+     wordsList[currentLevel] = wordsList[currentLevel].OrderBy(a => rng.Next()).ToList();
+    
+    // 2. Puxar em ordem, e ir verificando se já está na wordsDoneList
+    int i = 0;
+    while( wordsList[currentLevel][i].isDone != 0) i++;
+
     // Update current word label
-    CurrentWordLabel.GetComponent<TextMeshProUGUI>().text = wordsList[currentLevel][currentLevelWordsDone].name;
+    ObjectManager.CurrentWordText.GetComponent<TextMeshProUGUI>().text =  wordsList[currentLevel][i].name;
+
     UpdateGameState(GameState.PlayerTurn);
    }
 
    public void OnElementSelect(string selectedElementName) {
-    var selectedElementIndex = currentPlayerWord.FindIndex(element => element.shortName == selectedElementName);
+    var selectedElementIndex = currentPlayerAnswer.FindIndex(element => element.shortName == selectedElementName);
 
     if(selectedElementIndex == -1) {
-      currentPlayerWord.Add(new ElementCounter(selectedElementName));
-      selectedElementIndex = currentPlayerWord.Count - 1;
+      currentPlayerAnswer.Add(new ElementCounter(selectedElementName));
+      selectedElementIndex = currentPlayerAnswer.Count - 1;
     }
 
-    currentPlayerWord[selectedElementIndex].amount++;
+    currentPlayerAnswer[selectedElementIndex].amount++;
     updateCurrentAnswerUI();
    }
 
    private void updateCurrentAnswerUI() {
-    var elements = currentPlayerWord.Select(elementCounter => (elementCounter.shortName+(elementCounter.amount > 1 ? elementCounter.amount : ""))).ToArray();
-    CurrentPlayerWordLabel.GetComponent<TextMeshProUGUI>().text = string.Join("", elements);
+    var elements = currentPlayerAnswer.Select(elementCounter => (elementCounter.shortName+(elementCounter.amount > 1 ? elementCounter.amount : ""))).ToArray();
+    ObjectManager.CurrentPlayerWordText.GetComponent<TextMeshProUGUI>().text = string.Join("", elements);
    }
 
    public void CheckAnswer() {
-    var elements = currentPlayerWord.Select(elementCounter => (elementCounter.shortName+(elementCounter.amount > 1 ? elementCounter.amount : ""))).ToArray();
+    var elements = currentPlayerAnswer.Select(elementCounter => (elementCounter.shortName+(elementCounter.amount > 1 ? elementCounter.amount : ""))).ToArray();
     string answer = string.Join("", elements);
 
-    if(wordsList[currentLevel][currentLevelWordsDone].formula == answer) {
+    string currentWord = ObjectManager.CurrentWordText.GetComponent<TextMeshProUGUI>().text;
+    int doneElementIndex = wordsList[currentLevel].FindIndex((el) => el.name == currentWord);
+
+    // Update done property
+    if(wordsList[currentLevel][doneElementIndex].formula == answer) {
       StartCoroutine(fade(new Color(0, 0, 0, 0), new Color(0, 2, 0, 0.1F), 0.4F));
       StartCoroutine(fade(new Color(0, 2, 0, 0.1F), new Color(0, 0, 0, 0), 0.4F));
 
       successAnswers++;
+      wordsList[currentLevel][doneElementIndex].isDone = 1;
+      successAudio.Play();
     } else {
       StartCoroutine(fade(new Color(0, 0, 0, 0), new Color(2, 0, 0, 0.1F), 0.4F));
       StartCoroutine(fade(new Color(2, 0, 0, 0.1F), new Color(0, 0, 0, 0), 0.4F));
+      wordsList[currentLevel][doneElementIndex].isDone = -1;
+      failureAudio.Play();
     }
 
     UpdateGameState(GameState.NextLevel);
@@ -200,27 +241,48 @@ public class GameManager : MonoBehaviour
   private IEnumerator fade(Color startValue, Color endValue, float duration){
     float time = 0.0f;
     while (time < duration){
-      FeedbackPanel.GetComponent<Image>().color = Color.Lerp(startValue, endValue, time/duration);
+      ObjectManager.FeedbackAnswerPanel.GetComponent<Image>().color = Color.Lerp(startValue, endValue, time/duration);
       time += Time.deltaTime;
         yield return null;
     }
-    FeedbackPanel.GetComponent<Image>().color = endValue;
+    ObjectManager.FeedbackAnswerPanel.GetComponent<Image>().color = endValue;
   }
   public void ResetAnswer() {
-    currentPlayerWord.Clear();
+    currentPlayerAnswer.Clear();
     updateCurrentAnswerUI();
   }
 
   public void Restart() {
     currentLevel = 1;
     currentLevelWordsDone = -1;
-    currentPlayerWord.Clear();
+    currentPlayerAnswer.Clear();
     successAnswers = 0;
 
-    InGamePanel.SetActive(true);
-    SummaryPanel.SetActive(false);
+    timer[0] = 0;
+    timer[1] = 1;
+    TimeSpan time = TimeSpan.FromSeconds(timer[0]);
+    ObjectManager.SummaryTimerText.GetComponent<TextMeshProUGUI>().text = time.ToString("mm':'ss");
+
+    for (int i = 1; i < wordsList.Count; i++) {
+      for (int j = 0; j < 6; j++) {
+        wordsList[i][j].isDone = 0;
+      }
+    }
+
+    ObjectManager.InGamePanel.SetActive(true);
+    ObjectManager.SummaryPanel.SetActive(false);
+    ObjectManager.FeedbackCanvas.SetActive(false);
+    ObjectManager.MainCamera.GetComponent<ElementsBuilder>().Render();
     updateCurrentAnswerUI();
     UpdateGameState(GameState.NextLevel);
+  }
+
+  public void Update() {
+    if(timer[1] == 1) {
+      timer[0] += Time.deltaTime;
+      TimeSpan time = TimeSpan.FromSeconds(timer[0]);
+      ObjectManager.TimerText.GetComponent<TextMeshProUGUI>().text = time.ToString("mm':'ss");
+    }
   }
 
 

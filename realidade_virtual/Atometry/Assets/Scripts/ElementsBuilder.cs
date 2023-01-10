@@ -6,9 +6,8 @@ using TMPro;
 public class ElementsBuilder : MonoBehaviour
 {
   public GameObject ElementPrefab;
-  
-  void Start()
-  {
+  public GameObject ElementsGroup;
+  public void Render() {
     Element[] elementsList = {
       new Element("Hidrogênio", "H"), 
       new Element("Cloro", "Cl"), 
@@ -32,6 +31,8 @@ public class ElementsBuilder : MonoBehaviour
     int totalElements = elementsList.Length;
     
     int elementsPerRow = totalElements / totalRows;
+
+    ElementsGroup = new GameObject("ElementsGroup");
     for (int i = 0; i < totalElements; i++) {
       GameObject ElementInstance;
 
@@ -45,6 +46,7 @@ public class ElementsBuilder : MonoBehaviour
       
       // Render element
       ElementInstance = Instantiate(ElementPrefab, new Vector3(positionX, positionY, (float)-4.75F), Quaternion.identity);
+      ElementInstance.transform.parent = ElementsGroup.transform;
       ElementInstance.name = elementsList[i].shortName;
 
       // Set its color
@@ -59,6 +61,5 @@ public class ElementsBuilder : MonoBehaviour
       // Set extended text
       ElementInstance.transform.Find("Canvas/Text(Extended)").GetComponent<TextMeshProUGUI>().text = elementsList[i].name;
     }
-
   }
 }
