@@ -45,3 +45,6 @@ func _on_Conferir_correct_answer():
 		
 	emit_signal("current_level_and_sublevel", current_level_and_sublevel)
 	emit_signal("set_current_word", current_word)		
+	
+func test():
+	print("OOOOOOOOOOOOOI")

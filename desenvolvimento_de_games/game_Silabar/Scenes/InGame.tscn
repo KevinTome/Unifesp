@@ -218,8 +218,17 @@ frames = SubResource( 5 )
 frame = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Personagem"]
-position = Vector2( 166, 53 )
+position = Vector2( 164, 50 )
 shape = SubResource( 6 )
+
+[node name="TargetArea" type="Panel" parent="."]
+self_modulate = Color( 0, 1, 0.623529, 1 )
+anchor_right = 0.525
+margin_left = 264.0
+margin_top = 307.0
+margin_right = 1015.0
+margin_bottom = 459.0
+script = ExtResource( 36 )
 
 [node name="ContainerOrigem" type="HBoxContainer" parent="."]
 margin_left = 130.0
@@ -236,21 +245,24 @@ custom_styles/panel = SubResource( 18 )
 script = ExtResource( 22 )
 
 [node name="Padding" type="MarginContainer" parent="ContainerOrigem/SourceContainer"]
+show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 32.0
 margin_top = 32.0
+margin_bottom = -42.0
 
 [node name="Rows" type="HBoxContainer" parent="ContainerOrigem/SourceContainer/Padding"]
 margin_right = 990.0
-margin_bottom = 94.0
+margin_bottom = 52.0
 custom_constants/separation = 15
 alignment = 1
 
 [node name="Rows" type="HBoxContainer" parent="ContainerOrigem/SourceContainer"]
-visible = false
-margin_right = 990.0
-margin_bottom = 94.0
+margin_left = 33.0
+margin_top = 95.0
+margin_right = 1023.0
+margin_bottom = 189.0
 custom_constants/separation = 15
 alignment = 1
 
@@ -298,14 +310,9 @@ script = ExtResource( 17 )
 
 [node name="AudioPlayer_" parent="." instance=ExtResource( 19 )]
 
-[node name="TargetArea" type="HBoxContainer" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-script = ExtResource( 36 )
-
 [connection signal="current_level_and_sublevel" from="GameManager" to="UIController" method="_on_GameManager_current_level_and_sublevel"]
-[connection signal="set_current_word" from="GameManager" to="ContainerOrigem/SourceContainer" method="_on_GameManager_set_current_word"]
 [connection signal="set_current_word" from="GameManager" to="SilabasOptionButton" method="_on_GameManager_set_current_word"]
+[connection signal="set_current_word" from="GameManager" to="ContainerOrigem/SourceContainer" method="_on_GameManager_set_current_word"]
 [connection signal="saiu_da_tela" from="Personagem" to="." method="_on_Personagem_saiu_da_tela"]
 [connection signal="btn_saltar_pressed" from="Conferir" to="Personagem" method="_on_Conferir_btn_saltar_pressed"]
 [connection signal="item_selected" from="SilabasOptionButton" to="TargetArea" method="_on_SilabasOptionButton_item_selected"]

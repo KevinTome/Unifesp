@@ -14,7 +14,6 @@ func _ready() -> void:
 	mouse_id=-1
 	add_to_group("DRAGGABLE")
 	$Label.text = label
-	$".".rect_scale = Vector2(0.375,0.375)
 	
 	
 func get_drag_data(_position: Vector2):
