@@ -7,7 +7,7 @@ var jump_force = -1250 #eixo y é negativo para cima
 var is_grounded
 var in_interact_range
 onready var raycasts = $raycasts
-
+	
 func _physics_process(delta):
 	velocity.y += gravity * delta
 	
