@@ -7,4 +7,5 @@ func _physics_process(delta):
 	for body in bodies:
 		if body.name == "Player2":
 			print("uepa")
+			print(next_world)
 			get_tree().change_scene(next_world)

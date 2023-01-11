@@ -43,7 +43,7 @@ position = Vector2( 128, 0 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 64, 96, 32, 32 )
+region_rect = Rect2( 229.953, 119.601, 5.14429, 0 )
 __meta__ = {
 "_edit_group_": true
 }

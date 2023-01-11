@@ -12,7 +12,7 @@
 [node name="World" type="Node"]
 
 [node name="Person" parent="." instance=ExtResource( 4 )]
-position = Vector2( 392, 384 )
+position = Vector2( 390, 380 )
 collision_mask = 11
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
@@ -20,14 +20,14 @@ visible = false
 position = Vector2( 232, 142 )
 
 [node name="food" parent="." instance=ExtResource( 6 )]
-position = Vector2( 472, 368 )
+position = Vector2( 487, 356 )
 scale = Vector2( 0.36, 0.36 )
 
 [node name="clothes" parent="." instance=ExtResource( 3 )]
-position = Vector2( 640, 344 )
+position = Vector2( 719, 341 )
 
 [node name="money_bag" parent="." instance=ExtResource( 2 )]
-position = Vector2( 560, 328 )
+position = Vector2( 594, 312 )
 
 [node name="Player2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 120, 352 )
