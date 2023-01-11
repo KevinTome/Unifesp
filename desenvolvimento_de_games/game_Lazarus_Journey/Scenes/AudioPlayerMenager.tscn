@@ -1,0 +1,42 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scripts/AudioPlayerMenager.gd" type="Script" id=1]
+[ext_resource path="res://Audio/musica/lazarusjourney_mus_creditos.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Audio/musica/lazarusjourney_mus_gameplay_recepcao.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Audio/musica/lazarusjourney_mus_menu.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Audio/musica/lazarusjourney_mus_gameplay_asflorestas.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Audio/musica/lazarusjourney_mus_gameplay_asmontanhas.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Audio/musica/lazarusjourney_mus_gameplay_ograndeportao.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Audio/musica/lazarusjourney_mus_gameplay_oslagos.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Audio/musica/lazarusjourney_mus_gameplay_opantano.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Audio/musica/lazarusjourney_mus_gameplay_oscampos.ogg" type="AudioStream" id=10]
+
+[node name="AudioPlayerMenager" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="mus_credits" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+
+[node name="mus_gameplay_asflorestas" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+
+[node name="mus_gameplay_asmontanhas" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+
+[node name="mus_gameplay_ograndeportao" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+
+[node name="mus_gameplay_opantano" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+
+[node name="mus_gameplay_oscampos" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
+
+[node name="mus_gameplay_oslagos" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+
+[node name="mus_gameplay_recepcao" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
+[node name="mus_menu" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
