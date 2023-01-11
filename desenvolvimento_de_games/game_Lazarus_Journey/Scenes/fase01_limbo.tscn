@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Scenes/Player2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Tiles/tilesheet_01_limbo.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Sprites/Backgrounds_parallax/Fase1_limbo_recepcao/fase01_plano2.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/Texto.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/WorldComplete.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scripts/fase01_limbo.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/AudioPlayerMenager.tscn" type="PackedScene" id=9]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -659,6 +661,7 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 29/z_index = 0
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 8 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -771,3 +774,5 @@ __meta__ = {
 [node name="WorldComplete" parent="." instance=ExtResource( 7 )]
 position = Vector2( 2662, -13 )
 next_world = "res://Scenes/fase02_campos.tscn"
+
+[node name="AudioPlayerMenager" parent="." instance=ExtResource( 9 )]
