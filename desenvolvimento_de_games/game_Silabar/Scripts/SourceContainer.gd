@@ -29,37 +29,36 @@ func _ready() -> void:
 
 func _populate_dragables():
 	for dragable in dragables:
+		print(dragable)
 		var drag_item = draggable_scene.instance()
 		drag_item.id = dragable["id"]
 		drag_item.label = dragable["label"]
 		draggable_container.add_child(drag_item)
 
+
 func on_item_dropped_on_target(dropped_item: Draggable) -> void:
 	for drag_item in draggable_container.get_children():
+		print(drag_item)
 		drag_item = (drag_item as Draggable)
-		if drag_item.id == dropped_item.id && dropped_item.id!=0:
+		if drag_item.id == dropped_item.id:
 			draggable_container.remove_child(drag_item)
 			drag_item.queue_free()
 			break
 
+
 func can_drop_data(position: Vector2, data) -> bool:
 	var can_drop: bool = data is Node and data.is_in_group("DRAGGABLE")
-	print("[SourceContainer] can_drop_data has run, returning %s" % can_drop)
 	return can_drop
 
-func drop_data(position: Vector2, data) -> void:
-	print("[SourceContainer] drop_data has run")
-	print("[SourceContainer] Emiting signal: item_dropped_on_target")
 
-	var draggable_copy: TextureRect = draggable.instance()
-	draggable_copy.id = data.id
-	draggable_copy.label = data.label
-	draggable_copy.dropped_on_target = false # diable furhter dragging
+func drop_data(position: Vector2, data) -> void:
+	var draggable_instance: TextureRect = draggable.instance()
+	draggable_instance.id = data.id
+	draggable_instance.label = data.label
+	draggable_instance.dropped_on_target = false # diable furhter dragging
 	
-	var name = $".".name
-	var source = $".".get_child(0).get_child(0)
-	print("src -> targer: ", name," -> ", draggable_container.name)
-	source.add_child(draggable_copy)
+	var source = self.get_child(0).get_child(0)
+	source.add_child(draggable_instance)
 	
 	emit_signal("item_dropped_on_source", data)
 
@@ -68,7 +67,7 @@ func _on_GameManager_set_current_word(new_word):
 
 	for i in len(new_word):
 		local_draggable.push_back({
-			"id": 0,
+			"id": i,
 			"label": new_word[i].to_upper()
 		})
 		
