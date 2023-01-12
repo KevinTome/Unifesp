@@ -257,7 +257,7 @@ transform = Transform2D( 0.5, 0, 0, 0.5, 0, 0 )
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( -4864, 400 )
 motion_scale = Vector2( 0.5, 0.5 )
-motion_mirroring = Vector2( 5760, 1080 )
+motion_mirroring = Vector2( 5760, 1429 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 texture = ExtResource( 4 )
@@ -265,14 +265,14 @@ texture = ExtResource( 4 )
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( -4864, 400 )
 motion_scale = Vector2( 0.8, 0.8 )
-motion_mirroring = Vector2( 5760, 1080 )
+motion_mirroring = Vector2( 5760, 1429 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
 texture = ExtResource( 5 )
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( -4864, 400 )
-motion_mirroring = Vector2( 5760, 1080 )
+motion_mirroring = Vector2( 5760, 1429 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
 texture = ExtResource( 3 )

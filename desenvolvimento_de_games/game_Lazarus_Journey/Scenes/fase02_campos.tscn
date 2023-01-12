@@ -259,23 +259,24 @@ transform = Transform2D( 0.5, 0, 0, 0.5, 0, 0 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( -4864, 392 )
-motion_scale = Vector2( 0.5, 0.5 )
-motion_mirroring = Vector2( 5760, 1080 )
+motion_scale = Vector2( 0.2, 0.5 )
+motion_mirroring = Vector2( 5760, 1429 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 texture = ExtResource( 3 )
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( -4864, 392 )
-motion_scale = Vector2( 0.8, 0.8 )
-motion_mirroring = Vector2( 5760, 1080 )
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 5760, 1429 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
 texture = ExtResource( 4 )
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( -4864, 392 )
-motion_mirroring = Vector2( 5760, 1080 )
+motion_scale = Vector2( 0.8, 0.5 )
+motion_mirroring = Vector2( 5760, 1429 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
 texture = ExtResource( 5 )
@@ -285,15 +286,14 @@ position = Vector2( -2464, 353 )
 collision_mask = 7
 
 [node name="boas vindas" parent="." instance=ExtResource( 6 )]
-margin_left = -175.0
-margin_top = -47.0
-margin_right = -175.0
-margin_bottom = -47.0
+margin_left = -2629.0
+margin_top = 373.0
+margin_right = -2629.0
+margin_bottom = 373.0
 rect_scale = Vector2( 0.8, 0.8 )
 size_flags_stretch_ratio = 0.5
-Texto = "Boas vindas, pessoa perdida!
-Me chamo Lu, e eu vou te ajudar a achar o caminho de volta para casa. 
-Mova-se para cá!! (teclas A/D)"
+Texto = "Mas que ventania!!
+Acho melhor você pegar uns agasalhos, mas vê se não exagera!"
 
 [node name="WorldComplete" parent="." instance=ExtResource( 7 )]
 position = Vector2( -259, 357 )
@@ -320,3 +320,8 @@ position = Vector2( -1070, 101 )
 
 [node name="clothes2" parent="Itens" instance=ExtResource( 10 )]
 position = Vector2( -1498, 108 )
+
+[connection signal="interacted" from="Itens/clothes3" to="Player2" method="_on_interacted"]
+[connection signal="interacted" from="Itens/clothes" to="Player2" method="_on_interacted"]
+[connection signal="interacted" from="Itens/clothes4" to="Player2" method="_on_interacted"]
+[connection signal="interacted" from="Itens/clothes2" to="Player2" method="_on_interacted"]
