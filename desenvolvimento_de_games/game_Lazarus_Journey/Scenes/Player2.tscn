@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scripts/Player2.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/walking/02.png" type="Texture" id=2]
@@ -7,7 +7,9 @@
 [ext_resource path="res://Sprites/jump/05.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/walking/05.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/idle/04.png" type="Texture" id=7]
+[ext_resource path="res://Items/slot.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/idle/03.png" type="Texture" id=9]
+[ext_resource path="res://alphbeta.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://Sprites/walking/04.png" type="Texture" id=11]
 [ext_resource path="res://Sprites/walking/06.png" type="Texture" id=12]
 [ext_resource path="res://Sprites/jump/02.png" type="Texture" id=13]
@@ -15,6 +17,9 @@
 [ext_resource path="res://Sprites/jump/03.png" type="Texture" id=15]
 [ext_resource path="res://Sprites/walking/03.png" type="Texture" id=16]
 [ext_resource path="res://Sprites/jump/04.png" type="Texture" id=17]
+[ext_resource path="res://Items/camisa.png" type="Texture" id=18]
+[ext_resource path="res://Items/comida.png" type="Texture" id=19]
+[ext_resource path="res://Items/dinheiro.png" type="Texture" id=20]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -43,8 +48,11 @@ animations = [ {
 radius = 17.0
 height = 54.0
 
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 10 )
+
 [node name="Player2" type="KinematicBody2D"]
-position = Vector2( 2, 0 )
+position = Vector2( 5, 0 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -55,7 +63,6 @@ position = Vector2( -1, 4 )
 scale = Vector2( 0.1, 0.1 )
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -71,3 +78,95 @@ smoothing_enabled = true
 enabled = true
 cast_to = Vector2( 23, 0 )
 collision_mask = 2
+
+[node name="raycasts" type="Node2D" parent="."]
+
+[node name="raycast_down" type="RayCast2D" parent="raycasts"]
+position = Vector2( 29, 29 )
+enabled = true
+cast_to = Vector2( 0, 15 )
+collision_mask = 14
+
+[node name="raycast_down2" type="RayCast2D" parent="raycasts"]
+position = Vector2( -29, 29 )
+enabled = true
+cast_to = Vector2( 0, 15 )
+collision_mask = 14
+
+[node name="talk_raycast" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 50, 0 )
+collision_mask = 4
+
+[node name="inventario" type="GridContainer" parent="."]
+margin_left = -44.0
+margin_top = 57.0
+margin_right = 54.0
+margin_bottom = 110.0
+
+[node name="camisa_slot" type="Sprite" parent="inventario"]
+position = Vector2( 15, 14 )
+texture = ExtResource( 8 )
+
+[node name="Camisa" type="Sprite" parent="inventario/camisa_slot"]
+visible = false
+texture = ExtResource( 18 )
+
+[node name="qtde_camisa" type="Label" parent="inventario/camisa_slot"]
+visible = false
+margin_left = -14.0
+margin_top = -1.0
+margin_right = 14.0
+margin_bottom = 14.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 1
+custom_fonts/font = SubResource( 3 )
+text = "x1"
+align = 1
+valign = 2
+clip_text = true
+
+[node name="comida_slot" type="Sprite" parent="inventario"]
+position = Vector2( 47, 14 )
+texture = ExtResource( 8 )
+
+[node name="Comida" type="Sprite" parent="inventario/comida_slot"]
+visible = false
+position = Vector2( -1, 0 )
+texture = ExtResource( 19 )
+
+[node name="qtde_comida" type="Label" parent="inventario/comida_slot"]
+visible = false
+margin_left = -14.0
+margin_top = -1.0
+margin_right = 14.0
+margin_bottom = 14.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 1
+custom_fonts/font = SubResource( 3 )
+text = "x1"
+align = 1
+valign = 2
+clip_text = true
+
+[node name="dinheiro_slot" type="Sprite" parent="inventario"]
+position = Vector2( 79, 14 )
+texture = ExtResource( 8 )
+
+[node name="Dinheiro" type="Sprite" parent="inventario/dinheiro_slot"]
+visible = false
+texture = ExtResource( 20 )
+
+[node name="qtde_dinheiro" type="Label" parent="inventario/dinheiro_slot"]
+visible = false
+margin_left = -14.0
+margin_top = -1.0
+margin_right = 14.0
+margin_bottom = 14.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 1
+custom_fonts/font = SubResource( 3 )
+text = "x1"
+align = 1
+valign = 2
+clip_text = true

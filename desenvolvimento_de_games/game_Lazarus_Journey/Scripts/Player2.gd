@@ -21,6 +21,9 @@ var direction := Vector2.ZERO
 var last_dir=0
 var qtde_roupa = 0
 
+var is_grounded = false
+var in_interact_range
+onready var raycasts = $raycasts
 
 func _physics_process(delta):
 	MAX_SPEED = ParametrosGlobais.MAX_SPEED
@@ -78,13 +81,60 @@ func _physics_process(delta):
 	if(get_tree().current_scene.filename=="res://Scenes/fase02_campos.tscn"):
 		if(ParametrosGlobais.qtde_roupa==0): motion.x += WIND
 	
+	#is_grounded = _check_is_grounded()
+	in_interact_range = _check_in_interact()
 
 	motion = move_and_slide(motion, UP)
+	atualiza_inventario()
 	pass
 
+func _input(event):
+	if event.is_action_pressed("jump") and is_grounded:
+		motion.y = JUMP_HEIGHT/2
+		
+	if event.is_action_pressed("interact") and in_interact_range:
+		var talk_collider = $talk_raycast.get_collider()
+		talk_collider._interact_talk()
 
+##acho que a gente não precisa disso?
+func _check_is_grounded():
+	for raycast in raycasts.get_children():
+		if raycast.is_colliding():
+			return true
+	return false
+	
+func _check_in_interact():
+	if $talk_raycast.is_colliding():
+		return true
+	else:
+		return false	
 
-func _on_interacted():
+func _on_interacted(): #roupa
 	ParametrosGlobais.add_roupa()
 	if(ParametrosGlobais.qtde_roupa==3): ParametrosGlobais.MAX_SPEED -= 20
 	if(ParametrosGlobais.qtde_roupa==4): ParametrosGlobais.MAX_SPEED -= 20
+	print(ParametrosGlobais.qtde_roupa)
+
+func _on_food_interacted():
+	ParametrosGlobais.add_comida()
+	if(ParametrosGlobais.qtde_comida==0): ParametrosGlobais.JUMP_HEIGHT += 20
+	else: ParametrosGlobais.MAX_SPEED -= 5
+	print(ParametrosGlobais.qtde_comida)
+
+func _on_money_bag_interacted():
+	ParametrosGlobais.add_dinheiro()
+	print(ParametrosGlobais.qtde_dinheiro)
+	
+func atualiza_inventario():
+	if(ParametrosGlobais.qtde_roupa>=1): 
+		$inventario/camisa_slot/Camisa.visible=true
+		$inventario/camisa_slot/qtde_camisa.visible=true
+	$inventario/camisa_slot/qtde_camisa.text="x"+str(ParametrosGlobais.qtde_roupa)
+	if(ParametrosGlobais.qtde_comida>=1): 
+		$inventario/comida_slot/Comida.visible=true
+		$inventario/comida_slot/qtde_comida.visible=true
+	$inventario/comida_slot/qtde_comida.text="x"+str(ParametrosGlobais.qtde_comida)
+	if(ParametrosGlobais.qtde_dinheiro>=1): 
+		$inventario/dinheiro_slot/Dinheiro.visible=true
+		$inventario/dinheiro_slot/qtde_dinheiro.visible=true
+	$inventario/dinheiro_slot/qtde_dinheiro.text="x"+str(ParametrosGlobais.qtde_dinheiro)

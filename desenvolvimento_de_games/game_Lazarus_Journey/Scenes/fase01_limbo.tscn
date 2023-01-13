@@ -704,10 +704,6 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Player2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 2465, -379 )
-collision_mask = 7
-
 [node name="boas vindas" parent="." instance=ExtResource( 6 )]
 margin_left = -167.0
 margin_top = -88.0
@@ -758,7 +754,8 @@ margin_bottom = -55.0
 rect_scale = Vector2( 0.7, 0.7 )
 size_flags_stretch_ratio = 0.5
 Texto = "Você conseguiu!
-Agora venha aqui para que eu possa te levar para o próximo nível."
+Agora é só vir aqui!
+(Aperte ESPAÇO para interagir)"
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
@@ -770,6 +767,10 @@ tile_data = PoolIntArray( -589833, 11, 0, -524297, 5, 0, -524296, 4, 0, -524295,
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Player2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 2465, -379 )
+collision_mask = 7
 
 [node name="WorldComplete" parent="." instance=ExtResource( 7 )]
 position = Vector2( 2662, -13 )
