@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_09.png" type="Texture" id=1]
 [ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_19.png" type="Texture" id=2]
@@ -21,7 +21,7 @@
 [ext_resource path="res://Scenes/AudioPlayer.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Scripts/ConferirButton.gd" type="Script" id=20]
 [ext_resource path="res://Scripts/Cenoura.gd" type="Script" id=21]
-[ext_resource path="res://Scripts/SourceContainer.gd" type="Script" id=22]
+[ext_resource path="res://assets/Fonts/Anton-Regular.ttf" type="DynamicFontData" id=22]
 [ext_resource path="res://Scripts/InGame.gd" type="Script" id=23]
 [ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_16.png" type="Texture" id=24]
 [ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_05.png" type="Texture" id=25]
@@ -36,6 +36,7 @@
 [ext_resource path="res://Scripts/GameManager.gd" type="Script" id=34]
 [ext_resource path="res://Scripts/UIController.gd" type="Script" id=35]
 [ext_resource path="res://Scripts/TargetArea.gd" type="Script" id=36]
+[ext_resource path="res://Scripts/DragContainer.gd" type="Script" id=37]
 
 [sub_resource type="ConvexPolygonShape2D" id=7]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -151,10 +152,10 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 47, 53.5 )
+extents = Vector2( 33.5, 38 )
 
-[sub_resource type="StyleBoxFlat" id=18]
-bg_color = Color( 0, 0, 0, 0.392157 )
+[sub_resource type="RectangleShape2D" id=26]
+extents = Vector2( 498.5, 54 )
 
 [sub_resource type="StyleBoxTexture" id=20]
 texture = ExtResource( 14 )
@@ -179,6 +180,12 @@ region_rect = Rect2( 0, 0, 123, 123 )
 [sub_resource type="StyleBoxTexture" id=23]
 texture = ExtResource( 12 )
 region_rect = Rect2( 0, 0, 123, 123 )
+
+[sub_resource type="DynamicFont" id=27]
+size = 25
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 22 )
 
 [node name="InGame" type="Node2D"]
 script = ExtResource( 23 )
@@ -206,65 +213,39 @@ position = Vector2( -1, 0 )
 tile_set = SubResource( 16 )
 show_collision = true
 format = 1
-tile_data = PoolIntArray( 458751, 0, 1, 393216, 0, 1, 393217, 0, 1, 393218, 0, 1, 393219, 0, 2, 393232, 0, 1, 393233, 0, 1, 393234, 0, 1, 393235, 0, 1, 393236, 0, 1, 458752, 0, 65537, 458753, 0, 65537, 458754, 0, 65537, 458755, 0, 65538, 458756, 0, 131075, 458757, 0, 131075, 458758, 0, 131075, 458759, 0, 131075, 458760, 0, 131075, 458761, 0, 131075, 458762, 0, 131075, 458763, 0, 131075, 458764, 0, 131075, 458765, 0, 131075, 458766, 0, 131075, 458767, 0, 131075, 458768, 0, 65537, 458769, 0, 65537, 458770, 0, 65537, 458771, 0, 65537, 524288, 0, 65537, 524289, 0, 65537, 524290, 0, 65537, 524291, 0, 65538, 524292, 0, 196611, 524293, 0, 196611, 524294, 0, 196611, 524295, 0, 196611, 524296, 0, 196611, 524297, 0, 196611, 524298, 0, 196611, 524299, 0, 196611, 524300, 0, 196611, 524301, 0, 196611, 524302, 0, 196611, 524303, 0, 196611, 524304, 0, 65537, 524305, 0, 65537, 524306, 0, 65537, 524307, 0, 65537, 589824, 0, 65537, 589825, 0, 65537, 589826, 0, 65537, 589827, 0, 65538, 589828, 0, 196611, 589829, 0, 196611, 589830, 0, 196611, 589831, 0, 196611, 589832, 0, 196611, 589833, 0, 196611, 589834, 0, 196611, 589835, 0, 196611, 589836, 0, 196611, 589837, 0, 196611, 589838, 0, 196611, 589839, 0, 196611, 589840, 0, 65537, 589841, 0, 65537, 589842, 0, 65537, 589843, 0, 65537, 655360, 0, 65537, 655361, 0, 65537, 655362, 0, 65537, 655363, 0, 65538, 655364, 0, 196611, 655365, 0, 196611, 655366, 0, 196611, 655367, 0, 196611, 655368, 0, 196611, 655369, 0, 196611, 655370, 0, 196611, 655371, 0, 196611, 655372, 0, 196611, 655373, 0, 196611, 655374, 0, 196611, 655375, 0, 196611, 655376, 0, 65537, 655377, 0, 65537, 655378, 0, 65537, 655379, 0, 65537, 720896, 0, 65537, 720897, 0, 65537, 720898, 0, 65537, 720899, 0, 65538, 720900, 0, 196611, 720901, 0, 196611, 720902, 0, 196611, 720903, 0, 196611, 720904, 0, 196611, 720905, 0, 196611, 720906, 0, 196611, 720907, 0, 196611, 720908, 0, 196611, 720909, 0, 196611, 720910, 0, 196611, 720911, 0, 196611, 720912, 0, 65537, 720913, 0, 65537, 720914, 0, 65537, 720915, 0, 65537 )
+tile_data = PoolIntArray( 393216, 0, 1, 393217, 0, 1, 393234, 0, 1, 393235, 0, 1, 458752, 0, 65537, 458753, 0, 65537, 458770, 0, 65537, 458771, 0, 65537, 524288, 0, 65537, 524289, 0, 65537, 524290, 0, 131076, 524291, 0, 131076, 524292, 0, 131076, 524293, 0, 131076, 524294, 0, 131076, 524295, 0, 131076, 524296, 0, 131076, 524297, 0, 131076, 524298, 0, 131076, 524299, 0, 131076, 524300, 0, 131076, 524301, 0, 131076, 524302, 0, 131076, 524303, 0, 131076, 524304, 0, 131076, 524305, 0, 131076, 524306, 0, 65537, 524307, 0, 65537, 589824, 0, 65537, 589825, 0, 65537, 589826, 0, 196611, 589827, 0, 196611, 589828, 0, 196611, 589829, 0, 196611, 589830, 0, 196611, 589831, 0, 196611, 589832, 0, 196611, 589833, 0, 196611, 589834, 0, 196611, 589835, 0, 196611, 589836, 0, 196611, 589837, 0, 196611, 589838, 0, 196611, 589839, 0, 196611, 589840, 0, 196611, 589841, 0, 196611, 589842, 0, 65537, 589843, 0, 65537, 655360, 0, 65537, 655361, 0, 65537, 655362, 0, 196611, 655363, 0, 196611, 655364, 0, 196611, 655365, 0, 196611, 655366, 0, 196611, 655367, 0, 196611, 655368, 0, 196611, 655369, 0, 196611, 655370, 0, 196611, 655371, 0, 196611, 655372, 0, 196611, 655373, 0, 196611, 655374, 0, 196611, 655375, 0, 196611, 655376, 0, 196611, 655377, 0, 196611, 655378, 0, 65537, 655379, 0, 65537, 720896, 0, 65537, 720897, 0, 65537, 720898, 0, 196611, 720899, 0, 196611, 720900, 0, 196611, 720901, 0, 196611, 720902, 0, 196611, 720903, 0, 196611, 720904, 0, 196611, 720905, 0, 196611, 720906, 0, 196611, 720907, 0, 196611, 720908, 0, 196611, 720909, 0, 196611, 720910, 0, 196611, 720911, 0, 196611, 720912, 0, 196611, 720913, 0, 196611, 720914, 0, 65537, 720915, 0, 65537 )
 
 [node name="Personagem" type="KinematicBody2D" parent="."]
+position = Vector2( -132, 289 )
 script = ExtResource( 21 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Personagem"]
-position = Vector2( 168, 48 )
-scale = Vector2( 0.2, 0.2 )
+position = Vector2( 195, 53 )
+scale = Vector2( 0.140678, 0.140678 )
 frames = SubResource( 5 )
 frame = 10
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Personagem"]
-position = Vector2( 164, 50 )
+position = Vector2( 195.5, 53 )
 shape = SubResource( 6 )
 
+[node name="Area2D" type="StaticBody2D" parent="."]
+position = Vector2( 137, 383 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 502, 54 )
+shape = SubResource( 26 )
+disabled = true
+
 [node name="TargetArea" type="Panel" parent="."]
-self_modulate = Color( 0, 1, 0.623529, 1 )
+self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 0.525
-margin_left = 264.0
-margin_top = 307.0
-margin_right = 1015.0
-margin_bottom = 459.0
+margin_left = 137.0
+margin_top = 383.0
+margin_right = 1140.0
+margin_bottom = 493.0
 script = ExtResource( 36 )
-
-[node name="ContainerOrigem" type="HBoxContainer" parent="."]
-margin_left = 130.0
-margin_top = 488.0
-margin_right = 1152.0
-margin_bottom = 614.0
-rect_min_size = Vector2( 1022, 126 )
-
-[node name="SourceContainer" type="Panel" parent="ContainerOrigem"]
-margin_right = 1022.0
-margin_bottom = 126.0
-rect_min_size = Vector2( 1022, 126 )
-custom_styles/panel = SubResource( 18 )
-script = ExtResource( 22 )
-
-[node name="Padding" type="MarginContainer" parent="ContainerOrigem/SourceContainer"]
-show_behind_parent = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 32.0
-margin_top = 32.0
-margin_bottom = -42.0
-
-[node name="Rows" type="HBoxContainer" parent="ContainerOrigem/SourceContainer/Padding"]
-margin_right = 990.0
-margin_bottom = 52.0
-custom_constants/separation = 15
-alignment = 1
-
-[node name="Rows" type="HBoxContainer" parent="ContainerOrigem/SourceContainer"]
-margin_left = 33.0
-margin_top = 95.0
-margin_right = 1023.0
-margin_bottom = 189.0
-custom_constants/separation = 15
-alignment = 1
 
 [node name="Conferir" type="Button" parent="."]
 margin_left = 1041.0
@@ -277,6 +258,7 @@ custom_styles/normal = SubResource( 22 )
 script = ExtResource( 20 )
 
 [node name="Reiniciar" type="Button" parent="."]
+visible = false
 margin_left = 28.0
 margin_top = 17.0
 margin_right = 117.0
@@ -290,29 +272,58 @@ script = ExtResource( 20 )
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 531.0
-margin_top = 20.0
-margin_right = 622.0
-margin_bottom = 51.0
+margin_left = 541.0
+margin_top = 45.0
+margin_right = 632.0
+margin_bottom = 84.0
 rect_scale = Vector2( 2, 2 )
 custom_colors/font_color = Color( 0.85098, 0.498039, 0.0745098, 1 )
+custom_fonts/font = SubResource( 27 )
 text = "Nível -"
 align = 1
 valign = 1
 
+[node name="AudioPlayer_" parent="." instance=ExtResource( 19 )]
+
+[node name="DragContainer" type="ReferenceRect" parent="."]
+margin_left = 266.0
+margin_top = 589.0
+margin_right = 1036.0
+margin_bottom = 698.0
+border_color = Color( 0.00784314, 0.317647, 0.411765, 1 )
+border_width = 3.0
+editor_only = false
+script = ExtResource( 37 )
+
+[node name="Panel" type="Panel" parent="DragContainer"]
+modulate = Color( 0.0509804, 1, 0.690196, 0.756863 )
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 768.0
+margin_bottom = 108.0
+
+[node name="HDragContainer" type="HBoxContainer" parent="DragContainer"]
+margin_left = 2.0
+margin_top = 27.0
+margin_right = 766.0
+margin_bottom = 80.0
+alignment = 1
+
 [node name="SilabasOptionButton" type="OptionButton" parent="."]
-margin_left = 50.0
-margin_top = 422.0
-margin_right = 144.0
-margin_bottom = 468.0
+margin_left = 278.0
+margin_top = 619.0
+margin_right = 372.0
+margin_bottom = 665.0
 text = "Silabas"
 script = ExtResource( 17 )
 
-[node name="AudioPlayer_" parent="." instance=ExtResource( 19 )]
-
 [connection signal="current_level_and_sublevel" from="GameManager" to="UIController" method="_on_GameManager_current_level_and_sublevel"]
+[connection signal="set_current_word" from="GameManager" to="DragContainer" method="_on_GameManager_set_current_word"]
 [connection signal="set_current_word" from="GameManager" to="SilabasOptionButton" method="_on_GameManager_set_current_word"]
-[connection signal="set_current_word" from="GameManager" to="ContainerOrigem/SourceContainer" method="_on_GameManager_set_current_word"]
 [connection signal="saiu_da_tela" from="Personagem" to="." method="_on_Personagem_saiu_da_tela"]
+[connection signal="win_animation_ended" from="Personagem" to="GameManager" method="_on_Personagem_win_animation_ended"]
 [connection signal="btn_saltar_pressed" from="Conferir" to="Personagem" method="_on_Conferir_btn_saltar_pressed"]
+[connection signal="check_answer" from="Conferir" to="GameManager" method="_on_Conferir_check_answer"]
+[connection signal="pressed" from="Conferir" to="Conferir" method="_on_Conferir_pressed"]
 [connection signal="item_selected" from="SilabasOptionButton" to="TargetArea" method="_on_SilabasOptionButton_item_selected"]
+[connection signal="item_selected" from="SilabasOptionButton" to="DragContainer" method="_on_SilabasOptionButton_item_selected"]
