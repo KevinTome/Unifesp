@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/tileset/BG.png" type="Texture" id=1]
+[ext_resource path="res://assets/EXTRAS/jogar_off.png" type="Texture" id=2]
 [ext_resource path="res://assets/Wood/letter_S.png" type="Texture" id=3]
 [ext_resource path="res://assets/Wood/letter_I.png" type="Texture" id=4]
 [ext_resource path="res://assets/Wood/letter_R.png" type="Texture" id=5]
@@ -11,6 +12,14 @@
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=10]
 [ext_resource path="res://Scripts/btn.gd" type="Script" id=11]
 [ext_resource path="res://Scenes/AudioPlayer.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/EXTRAS/CREDITO_off.png" type="Texture" id=13]
+[ext_resource path="res://assets/EXTRAS/jogar_on.png" type="Texture" id=14]
+[ext_resource path="res://assets/EXTRAS/jogar_off_green.png" type="Texture" id=15]
+[ext_resource path="res://assets/EXTRAS/SAIR_off.png" type="Texture" id=16]
+[ext_resource path="res://assets/EXTRAS/CREDITO_on.png" type="Texture" id=17]
+[ext_resource path="res://assets/EXTRAS/CREDITO_off_green.png" type="Texture" id=18]
+[ext_resource path="res://assets/EXTRAS/SAIR_off_yellow.png" type="Texture" id=19]
+[ext_resource path="res://assets/EXTRAS/SAIR_on.png" type="Texture" id=20]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 10 )
@@ -33,9 +42,9 @@ custom_constants/separation = 64
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 42.0
+margin_top = 37.0
 margin_right = 1278.0
-margin_bottom = 138.0
+margin_bottom = 133.0
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
@@ -121,76 +130,71 @@ expand = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
 margin_left = 389.0
-margin_top = 202.0
+margin_top = 197.0
 margin_right = 889.0
-margin_bottom = 582.0
+margin_bottom = 587.0
 rect_min_size = Vector2( 500, 200 )
 size_flags_horizontal = 4
-custom_constants/separation = 100
+custom_constants/separation = -30
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
 margin_right = 500.0
-margin_bottom = 60.0
-size_flags_vertical = 0
-custom_constants/separation = 0
+margin_bottom = 150.0
+rect_min_size = Vector2( 0, 150 )
 alignment = 1
 
-[node name="comear" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="PlayButton" type="TextureButton" parent="VBoxContainer/VBoxContainer/HBoxContainer4"]
 margin_left = 150.0
 margin_right = 350.0
-margin_bottom = 60.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_min_size = Vector2( 200, 60 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "Começar"
-clip_text = true
-icon_align = 1
-expand_icon = true
+margin_bottom = 150.0
+rect_min_size = Vector2( 200, 0 )
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 14 )
+texture_hover = ExtResource( 15 )
+expand = true
 script = ExtResource( 11 )
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
-margin_top = 160.0
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+margin_top = 120.0
 margin_right = 500.0
-margin_bottom = 220.0
-rect_min_size = Vector2( 150, 50 )
-custom_constants/separation = 0
+margin_bottom = 270.0
+rect_min_size = Vector2( 0, 150 )
 alignment = 1
 
-[node name="creditos" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="CreditsButton" type="TextureButton" parent="VBoxContainer/VBoxContainer/HBoxContainer5"]
 margin_left = 150.0
 margin_right = 350.0
-margin_bottom = 60.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_min_size = Vector2( 200, 60 )
-text = "Creditos"
-icon_align = 1
+margin_bottom = 150.0
+rect_min_size = Vector2( 200, 150 )
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 17 )
+texture_hover = ExtResource( 18 )
+expand = true
 script = ExtResource( 11 )
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
-margin_top = 320.0
+[node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+margin_top = 240.0
 margin_right = 500.0
-margin_bottom = 380.0
-custom_constants/separation = 0
+margin_bottom = 390.0
+rect_min_size = Vector2( 0, 150 )
 alignment = 1
 
-[node name="sair" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer3"]
+[node name="QuitButton" type="TextureButton" parent="VBoxContainer/VBoxContainer/HBoxContainer6"]
 margin_left = 150.0
 margin_right = 350.0
-margin_bottom = 60.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_min_size = Vector2( 200, 60 )
-text = "Sair"
-icon_align = 1
+margin_bottom = 150.0
+rect_min_size = Vector2( 200, 150 )
+texture_normal = ExtResource( 16 )
+texture_pressed = ExtResource( 20 )
+texture_hover = ExtResource( 19 )
+expand = true
 script = ExtResource( 11 )
 
 [node name="Label2" type="Label" parent="VBoxContainer"]
-margin_top = 646.0
+margin_top = 651.0
 margin_right = 1278.0
-margin_bottom = 668.0
+margin_bottom = 673.0
 rect_min_size = Vector2( 67, 22 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )

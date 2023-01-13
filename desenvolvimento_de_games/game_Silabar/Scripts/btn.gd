@@ -1,16 +1,16 @@
-extends Button
+extends TextureButton
 
 func _ready():
 	$".".connect("pressed", self, "_button_pressed")
 
 func _button_pressed():
-	var txt= $".".text
+	var txt= $".".name
 	print("Botão " + txt)
 	
 	match txt:
-		"Sair":
+		"QuitButton":
 			get_tree().quit()
-		"Começar":
+		"PlayButton":
 			get_tree().change_scene("res://Scenes/InGame.tscn")			
-		"Creditos":
+		"CreditsButton":
 			get_tree().change_scene("res://Scenes/Credits.tscn")
