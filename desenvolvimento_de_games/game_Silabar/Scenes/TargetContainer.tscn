@@ -1,16 +1,25 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Scripts/target.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/TargetContainer.gd" type="Script" id=1]
 
 [node name="TargetControl" type="Control"]
 
-[node name="TargetPanel" type="Panel" parent="."]
-modulate = Color( 0.854902, 0.0235294, 0.823529, 1 )
+[node name="TargetContainerPanel" type="Panel" parent="."]
+self_modulate = Color( 1, 1, 1, 0.505882 )
 margin_right = 40.0
 margin_bottom = 40.0
 
+[node name="TargetBorder" type="ReferenceRect" parent="."]
+margin_left = -1.0
+margin_top = -2.0
+margin_right = 42.0
+margin_bottom = 41.0
+border_color = Color( 0.345098, 0.223529, 0.0196078, 1 )
+border_width = 3.0
+editor_only = false
+
 [node name="TargetContainer" type="HBoxContainer" parent="."]
-modulate = Color( 0.968627, 0.0784314, 0.0784314, 1 )
 margin_right = 40.0
 margin_bottom = 40.0
+alignment = 1
 script = ExtResource( 1 )
