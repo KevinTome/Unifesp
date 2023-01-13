@@ -36,7 +36,7 @@ func _physics_process(delta):
 			motion.x = min(motion.x+(ACCELERATION*direction.x), direction.x*MAX_SPEED)
 		if(Input.is_action_pressed("move_left")):
 			motion.x = max(motion.x+(ACCELERATION*direction.x), direction.x*MAX_SPEED)
-		$Sprite.scale.x = direction.x
+		$Sprite.scale.x = direction.x*0.1
 		
 		$Sprite.play("Run")
 	else:
@@ -46,6 +46,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("shift_hold"):
 		if last_dir >= 1 and isWall.is_colliding() and !is_on_floor():
 			if Input.is_action_just_pressed("jump"):
+				$Sprite.play("Jump")
 				motion.x = -MAX_SPEED*2
 				motion.y = JUMP_HEIGHT
 				isWall.scale.x = direction.x*-1
@@ -53,6 +54,7 @@ func _physics_process(delta):
 				motion.y = GRAVITY
 		elif last_dir <= -1 and isWall.is_colliding() and !is_on_floor():
 			if Input.is_action_just_pressed("jump"):
+				$Sprite.play("Jump")
 				motion.x = MAX_SPEED*2
 				motion.y = JUMP_HEIGHT
 				isWall.scale.x = direction.x
@@ -61,6 +63,7 @@ func _physics_process(delta):
 	
 	if is_on_floor():
 		if Input.is_action_just_pressed("jump"):
+			$Sprite.play("Jump")
 			motion.y = JUMP_HEIGHT
 		if(friction == true):
 			motion.x = lerp(motion.x, 0, 0.2)

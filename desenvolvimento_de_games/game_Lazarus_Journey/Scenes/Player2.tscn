@@ -1,52 +1,61 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scripts/Player2.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Player/Idle0.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Player/Run1.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Player/Run0.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/Player/Run3.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/Player/Run4.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/Player/Run2.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Player/Run7.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Player/Jump0.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/Player/Jump3.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/walking/02.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/idle/01.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/idle/02.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/jump/05.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/walking/05.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/idle/04.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/idle/03.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/walking/04.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/walking/06.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/jump/02.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/walking/01.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/jump/03.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/walking/03.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/jump/04.png" type="Texture" id=17]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 10 ) ],
+"frames": [ ExtResource( 17 ) ],
 "loop": true,
 "name": "Fall",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 9 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "Idle",
-"speed": 5.0
+"speed": 2.0
 }, {
-"frames": [ ExtResource( 9 ) ],
+"frames": [ ExtResource( 13 ), ExtResource( 15 ), ExtResource( 17 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "Jump",
-"speed": 5.0
+"speed": 10.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 8 ) ],
+"frames": [ ExtResource( 14 ), ExtResource( 2 ), ExtResource( 16 ), ExtResource( 11 ), ExtResource( 6 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "Run",
-"speed": 10.0
+"speed": 7.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 14.0
-height = 28.0
+radius = 17.0
+height = 54.0
 
 [node name="Player2" type="KinematicBody2D"]
+position = Vector2( 2, 0 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( -1, 4 )
+scale = Vector2( 0.1, 0.1 )
 frames = SubResource( 1 )
 animation = "Idle"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -60,5 +69,5 @@ smoothing_enabled = true
 
 [node name="WallDetector" type="RayCast2D" parent="."]
 enabled = true
-cast_to = Vector2( 20, 0 )
+cast_to = Vector2( 23, 0 )
 collision_mask = 2
