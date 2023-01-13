@@ -11,7 +11,6 @@ extents = Vector2( 16, 64.5 )
 
 [node name="Person" type="RigidBody2D"]
 collision_layer = 4
-mode = 1
 script = ExtResource( 2 )
 
 [node name="interact_range" type="Area2D" parent="."]
