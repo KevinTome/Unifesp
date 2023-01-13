@@ -312,8 +312,15 @@ collision_mask = 7
 [node name="AudioPlayerMenager" parent="." instance=ExtResource( 9 )]
 
 [node name="TextBox" parent="." instance=ExtResource( 6 )]
-margin_left = -2458.0
-margin_top = 281.0
-margin_right = -2458.0
-margin_bottom = 281.0
+margin_left = -2890.0
+margin_top = 280.0
+margin_right = -2890.0
+margin_bottom = 280.0
 Texto = "Finalmente! Chegamos no grande portão, mas antes, preciso falar com você..."
+
+[node name="FinalText" parent="." instance=ExtResource( 6 )]
+margin_left = -2216.0
+margin_top = 278.0
+margin_right = -2216.0
+margin_bottom = 278.0
+Texto = "Durante essa jornada, você foi..."

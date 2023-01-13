@@ -1,11 +1,10 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Scenes/Player2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Tiles/tilesheet_02_campos.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/Backgrounds_parallax/Fase2_luxuria_campos/fase02_plano1.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Backgrounds_parallax/Fase2_luxuria_campos/fase02_plano2.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/Backgrounds_parallax/Fase2_luxuria_campos/fase02_plano3.png" type="Texture" id=5]
-[ext_resource path="res://Scenes/Texto.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/WorldComplete.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scripts/fase02_campos.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/AudioPlayerMenager.tscn" type="PackedScene" id=9]
@@ -280,16 +279,6 @@ motion_mirroring = Vector2( 5760, 1429 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
 texture = ExtResource( 5 )
-
-[node name="boas vindas" parent="." instance=ExtResource( 6 )]
-margin_left = -2629.0
-margin_top = 373.0
-margin_right = -2629.0
-margin_bottom = 373.0
-rect_scale = Vector2( 0.8, 0.8 )
-size_flags_stretch_ratio = 0.5
-Texto = "Mas que ventania!!
-Acho melhor você pegar uns agasalhos, mas vê se não exagera!"
 
 [node name="WorldComplete" parent="." instance=ExtResource( 7 )]
 position = Vector2( -259, 357 )

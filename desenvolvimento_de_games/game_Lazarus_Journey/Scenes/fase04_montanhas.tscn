@@ -318,13 +318,14 @@ position = Vector2( -1083, 280 )
 [node name="money_bag4" parent="Itens" instance=ExtResource( 10 )]
 position = Vector2( -2281, 26 )
 
-[connection signal="interacted" from="Itens/money_bag" to="Player2" method="_on_money_bag_interacted"]
-[connection signal="interacted" from="Itens/money_bag2" to="Player2" method="_on_money_bag_interacted"]
-[connection signal="interacted" from="Itens/money_bag3" to="Player2" method="_on_money_bag_interacted"]
-[connection signal="interacted" from="Itens/money_bag4" to="Player2" method="_on_money_bag_interacted"]
 [node name="TextBox" parent="." instance=ExtResource( 6 )]
 margin_left = -2858.0
 margin_top = 263.0
 margin_right = -2858.0
 margin_bottom = 263.0
 Texto = "Ande, preciso que você pegue um saco de moedas para te tirar daqui..."
+
+[connection signal="interacted" from="Itens/money_bag" to="Player2" method="_on_money_bag_interacted"]
+[connection signal="interacted" from="Itens/money_bag2" to="Player2" method="_on_money_bag_interacted"]
+[connection signal="interacted" from="Itens/money_bag3" to="Player2" method="_on_money_bag_interacted"]
+[connection signal="interacted" from="Itens/money_bag4" to="Player2" method="_on_money_bag_interacted"]

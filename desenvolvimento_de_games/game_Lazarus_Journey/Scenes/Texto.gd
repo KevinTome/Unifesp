@@ -29,6 +29,9 @@ func show():
 
 func add_text(texto):
 	label_txt.text = texto
+	if($".".name == "FinalText"):
+		ParametrosGlobais.get_adjetivos()
+		label_txt.text = ParametrosGlobais.adjetivos
 	show()
 	$Tween.interpolate_property(label_txt, "percent_visible",0.0,1.0, len(texto)*CHAR_READ_RATE, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.start()
