@@ -122,7 +122,7 @@ func _on_food_interacted():
 	ParametrosGlobais.add_comida()
 	if(ParametrosGlobais.qtde_comida==0): ParametrosGlobais.JUMP_HEIGHT += 20
 	else: ParametrosGlobais.MAX_SPEED -= 5
-	print(ParametrosGlobais.qtde_comida)
+	print("COMIDA" ,ParametrosGlobais.qtde_comida)
 
 func _on_money_bag_interacted():
 	ParametrosGlobais.add_dinheiro()
@@ -141,3 +141,4 @@ func atualiza_inventario():
 		$inventario/dinheiro_slot/Dinheiro.visible=true
 		$inventario/dinheiro_slot/qtde_dinheiro.visible=true
 	$inventario/dinheiro_slot/qtde_dinheiro.text="x"+str(ParametrosGlobais.qtde_dinheiro)
+

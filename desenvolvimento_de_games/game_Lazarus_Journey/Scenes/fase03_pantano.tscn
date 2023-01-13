@@ -350,3 +350,11 @@ margin_top = 302.0
 margin_right = -2858.0
 margin_bottom = 302.0
 Texto = "Preciso que você recolha quatro pedaços de comida, vão te ajudar na jornada. "
+
+[connection signal="interacted" from="Itens/food" to="Player2" method="_on_food_interacted"]
+[connection signal="interacted" from="Itens/food2" to="Player2" method="_on_food_interacted"]
+[connection signal="interacted" from="Itens/food3" to="Player2" method="_on_food_interacted"]
+[connection signal="interacted" from="Itens/food4" to="Player2" method="_on_food_interacted"]
+[connection signal="interacted" from="Itens/food5" to="Player2" method="_on_food_interacted"]
+[connection signal="interacted" from="Itens/food6" to="Player2" method="_on_food_interacted"]
+[connection signal="interacted" from="Itens/food7" to="Player2" method="_on_food_interacted"]

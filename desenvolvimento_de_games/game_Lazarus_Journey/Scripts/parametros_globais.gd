@@ -4,7 +4,7 @@ var MAX_SPEED = 250
 var JUMP_HEIGHT = -500
 var qtde_roupa = 0
 var qtde_comida = 0 
-var qtde_dinheiro = 0 
+var qtde_dinheiro = 0
 var qtde_incomodo = 0
 var acao_violenta = 1
 
@@ -14,9 +14,9 @@ var titulo
 var adjetivos = "Você foi "
 var badending = false
 
-var atrib_oscampos = ["Resiliente, ", "Pouco luxurioso, ", "Luxurioso, ", "Extremamente luxurioso"]
+var atrib_oscampos = ["Resiliente, ", "Pouco luxurioso, ", "Luxurioso, ", "Extremamente luxurioso, "]
 var atrib_opantano = ["desconfiado, ", "composturado, ", "pouco guloso, ", "guloso, ", "extremamente guloso, "]
-var atrib_asmontanhas = ["paranóico, ", "humilde, ", "pouco ganancioso, ", "ganancioso, ", "extremamente ganancioso"]
+var atrib_asmontanhas = ["paranóico, ", "humilde, ", "pouco ganancioso, ", "ganancioso, ", "extremamente ganancioso, "]
 var atrib_oslagos = ["paciente ", "pouco raivoso ", "raivoso ", "extremamente raivoso "]
 var atrib_asflorestas = ["e pacífico, ", "e um pouco violento.", "e violento.", "e extremamente violento"]
 

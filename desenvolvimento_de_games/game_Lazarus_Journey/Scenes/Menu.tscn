@@ -28,9 +28,9 @@ margin_bottom = 508.0
 alignment = 1
 
 [node name="PlayButton" type="TextureButton" parent="VBoxContainer"]
-margin_top = 33.0
+margin_top = 102.0
 margin_right = 210.0
-margin_bottom = 83.0
+margin_bottom = 152.0
 rect_min_size = Vector2( 160, 50 )
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 2 )
@@ -40,12 +40,14 @@ script = ExtResource( 5 )
 button_action = "play"
 
 [node name="Spacer" type="TextureButton" parent="VBoxContainer"]
-margin_top = 87.0
+visible = false
+margin_top = 114.0
 margin_right = 210.0
-margin_bottom = 167.0
+margin_bottom = 194.0
 rect_min_size = Vector2( 210, 80 )
 
 [node name="CreditsButton" type="TextureButton" parent="VBoxContainer"]
+visible = false
 margin_top = 171.0
 margin_right = 210.0
 margin_bottom = 221.0
@@ -58,9 +60,9 @@ script = ExtResource( 5 )
 button_action = "credits"
 
 [node name="QuitButton" type="TextureButton" parent="VBoxContainer"]
-margin_top = 225.0
+margin_top = 156.0
 margin_right = 210.0
-margin_bottom = 275.0
+margin_bottom = 206.0
 rect_min_size = Vector2( 160, 50 )
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 4 )

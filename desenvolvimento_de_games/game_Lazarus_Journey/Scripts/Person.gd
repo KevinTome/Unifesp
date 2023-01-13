@@ -20,11 +20,17 @@ func _interact_talk():
 		if($".".name == "observador" && ParametrosGlobais.qtde_dinheiro >= 4):
 			$collision.disabled = true
 			observador_flag = true
+			ParametrosGlobais.acao_violenta = 2
 			
 		if($".".name == "violenta" && violenta_flag>0):
 			violenta_flag-=1
 		if($".".name == "violenta" && violenta_flag<=0):
 			$collision.disabled = true
+			ParametrosGlobais.acao_violenta = 3
+			
+		if($".".name == "violentada" && ParametrosGlobais.qtde_comida >= 4):
+			$collision.disabled = true
+			ParametrosGlobais.acao_violenta = 0
 	else:
 		already_interacted = true
 		$collision.disabled = true
