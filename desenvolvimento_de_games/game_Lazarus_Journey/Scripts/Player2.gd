@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 onready var _animated_sprite = $AnimatedSprite
 onready var isWall := $WallDetector as RayCast2D
+#onready var conversar := $talk_raycast as RayCast2D
 onready var audio_player = $AudioPlayerMenager
 
 #func _process(_delta):
@@ -36,6 +37,7 @@ func _physics_process(delta):
 	if(direction.x!=0):
 		last_dir = direction.x
 		isWall.scale.x = direction.x
+		$talk_raycast.scale.x = direction.x
 		if(Input.is_action_pressed("move_right")):
 			motion.x = min(motion.x+(ACCELERATION*direction.x), direction.x*MAX_SPEED)
 		if(Input.is_action_pressed("move_left")):

@@ -4,7 +4,8 @@ var MAX_SPEED = 250
 var JUMP_HEIGHT = -500
 var qtde_roupa = 0
 var qtde_comida = 0 
-var qtde_dinheiro = 0 
+var qtde_dinheiro = 5 
+
 
 var pontos = 0
 
