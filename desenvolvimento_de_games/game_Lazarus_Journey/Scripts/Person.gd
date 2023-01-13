@@ -1,8 +1,13 @@
-extends StaticBody2D
+extends RigidBody2D
 
 var already_interacted = false
 
-func _ready():
+onready var pos = position
+
+func _process(delta):
+	move()
+
+func _ready(): 
 	$text.visible = false
 
 func _interact_talk():
@@ -15,3 +20,8 @@ func _on_interact_range_body_entered(body):
 
 func _on_interact_range_body_exited(body):
 	$text.visible = false
+
+func move():
+	print(pos)
+	pos += Vector2(0.15,0)
+	set_position(pos)

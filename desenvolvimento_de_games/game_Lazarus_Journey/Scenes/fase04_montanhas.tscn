@@ -11,7 +11,6 @@
 [ext_resource path="res://Scenes/AudioPlayerMenager.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Items/money_bag.tscn" type="PackedScene" id=10]
 
-
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 
@@ -318,3 +317,10 @@ position = Vector2( -1083, 280 )
 
 [node name="money_bag4" parent="Itens" instance=ExtResource( 10 )]
 position = Vector2( -2281, 26 )
+
+[node name="TextBox" parent="." instance=ExtResource( 6 )]
+margin_left = -2858.0
+margin_top = 263.0
+margin_right = -2858.0
+margin_bottom = 263.0
+Texto = "Ande, preciso que você pegue um saco de moedas para te tirar daqui..."
