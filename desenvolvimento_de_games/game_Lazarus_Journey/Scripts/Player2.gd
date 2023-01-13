@@ -22,7 +22,6 @@ var direction := Vector2.ZERO
 var last_dir=0
 var qtde_roupa = 0
 
-
 func _physics_process(delta):
 	MAX_SPEED = ParametrosGlobais.MAX_SPEED
 	JUMP_HEIGHT = ParametrosGlobais.JUMP_HEIGHT

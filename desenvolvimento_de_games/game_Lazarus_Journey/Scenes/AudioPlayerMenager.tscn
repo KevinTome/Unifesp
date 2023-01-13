@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scripts/AudioPlayerMenager.gd" type="Script" id=1]
 [ext_resource path="res://Audio/musica/lazarusjourney_mus_creditos.ogg" type="AudioStream" id=2]
@@ -18,9 +18,14 @@
 [ext_resource path="res://Audio/sfx/lazarusjourney_sfx_interact_cloth.wav" type="AudioStream" id=16]
 [ext_resource path="res://Audio/fanfarra/lazarusjourney_fan_failure.wav" type="AudioStream" id=17]
 [ext_resource path="res://Audio/ambiente/lazarusjourney_ambience_campos.ogg" type="AudioStream" id=18]
+[ext_resource path="res://Audio/sfx/lazarusjourney_sfx_walljump.wav" type="AudioStream" id=19]
 
 [node name="AudioPlayerMenager" type="Node2D"]
 script = ExtResource( 1 )
+
+[node name="ambience_oscampos" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 18 )
+max_distance = 10000.0
 
 [node name="mus_credits" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 2 )
@@ -60,27 +65,32 @@ max_distance = 10000.0
 
 [node name="fan_failure" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 17 )
+max_distance = 10000.0
 
 [node name="fan_sucess" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 11 )
+max_distance = 10000.0
 
 [node name="sfx_death" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 12 )
+max_distance = 10000.0
 
 [node name="sfx_interact_clothes" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 16 )
+max_distance = 10000.0
 
 [node name="sfx_interact_foods" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 13 )
+max_distance = 10000.0
 
 [node name="sfx_interact_moneybags" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 14 )
+max_distance = 10000.0
 
 [node name="sfx_jump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 15 )
+max_distance = 10000.0
 
 [node name="sfx_walljump" type="AudioStreamPlayer2D" parent="."]
-
-[node name="ambience_oscampos" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 18 )
-volume_db = 1.0
+stream = ExtResource( 19 )
+max_distance = 10000.0
