@@ -50,8 +50,12 @@ func next_level():
 	var new_sublevel = current_level_and_sublevel[1]
 	
 	if(new_sublevel == len(WORDS[new_level-1])):
+		if(new_level == len(WORDS)):
+			get_tree().change_scene("res://Scenes/Win.tscn")
+			return
+
 		new_level = new_level + 1
-		new_sublevel = 0
+		new_sublevel = 1
 	else:
 		new_sublevel = new_sublevel + 1
 			
