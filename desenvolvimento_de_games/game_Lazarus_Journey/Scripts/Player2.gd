@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 onready var _animated_sprite = $AnimatedSprite
 onready var isWall := $WallDetector as RayCast2D
+onready var audio_player = 
 
 #func _process(_delta):
 #	if Input.is_action_pressed("move_right"):
@@ -46,6 +47,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("shift_hold"):
 		if last_dir >= 1 and isWall.is_colliding() and !is_on_floor():
 			if Input.is_action_just_pressed("jump"):
+				audio_player.play("sfx_walljump")
 				$Sprite.play("Jump")
 				motion.x = -MAX_SPEED*2
 				motion.y = JUMP_HEIGHT
@@ -54,6 +56,7 @@ func _physics_process(delta):
 				motion.y = GRAVITY
 		elif last_dir <= -1 and isWall.is_colliding() and !is_on_floor():
 			if Input.is_action_just_pressed("jump"):
+				audio_player.play("sfx_jump")
 				$Sprite.play("Jump")
 				motion.x = MAX_SPEED*2
 				motion.y = JUMP_HEIGHT
