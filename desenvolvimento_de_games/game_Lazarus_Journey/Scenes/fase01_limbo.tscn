@@ -732,8 +732,7 @@ margin_right = 886.0
 margin_bottom = -114.0
 rect_scale = Vector2( 0.8, 0.8 )
 size_flags_stretch_ratio = 0.5
-Texto = "Um obstáculo ainda mais formidável... Tente pular depois de se segurar na borda dele!
-(com a tecla SHIFT)"
+Texto = "Um obstáculo ainda mais formidável... Tente pular depois de se segurar na borda dele! (com a tecla SHIFT)"
 
 [node name="buraco" parent="." instance=ExtResource( 6 )]
 margin_left = 1463.0
@@ -769,7 +768,7 @@ __meta__ = {
 }
 
 [node name="Player2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 2465, -379 )
+position = Vector2( -311, -48 )
 collision_mask = 7
 
 [node name="WorldComplete" parent="." instance=ExtResource( 7 )]

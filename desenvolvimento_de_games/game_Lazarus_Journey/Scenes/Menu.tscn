@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Sprites/telainicial.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/btn_iniciar.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/btn_creditos.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/btn_sair.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/ButtonAction.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Menu.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/AudioPlayerMenager.tscn" type="PackedScene" id=7]
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -22.0
+margin_right = 1046.0
+margin_bottom = 601.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 760.0
+margin_top = 200.0
+margin_right = 970.0
+margin_bottom = 508.0
+alignment = 1
+
+[node name="PlayButton" type="TextureButton" parent="VBoxContainer"]
+margin_top = 33.0
+margin_right = 210.0
+margin_bottom = 83.0
+rect_min_size = Vector2( 160, 50 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+script = ExtResource( 5 )
+button_action = "play"
+
+[node name="Spacer" type="TextureButton" parent="VBoxContainer"]
+margin_top = 87.0
+margin_right = 210.0
+margin_bottom = 167.0
+rect_min_size = Vector2( 210, 80 )
+
+[node name="CreditsButton" type="TextureButton" parent="VBoxContainer"]
+margin_top = 171.0
+margin_right = 210.0
+margin_bottom = 221.0
+rect_min_size = Vector2( 160, 50 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+script = ExtResource( 5 )
+button_action = "credits"
+
+[node name="QuitButton" type="TextureButton" parent="VBoxContainer"]
+margin_top = 225.0
+margin_right = 210.0
+margin_bottom = 275.0
+rect_min_size = Vector2( 160, 50 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+script = ExtResource( 5 )
+button_action = "quit"
+
+[node name="AudioPlayerMenager" parent="." instance=ExtResource( 7 )]
