@@ -13,6 +13,7 @@ func _ready():
 func _interact_talk():
 	already_interacted = true
 	$collision.disabled = true
+	print("colisão desativada")
 
 func _on_interact_range_body_entered(body):
 	if !already_interacted:

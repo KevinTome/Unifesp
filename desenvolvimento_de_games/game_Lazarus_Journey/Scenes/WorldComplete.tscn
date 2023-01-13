@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/WorldComplete.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/LU_IDLE.svg" type="Texture" id=2]
+[ext_resource path="res://Sprites/LU_IDLE.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -21,6 +21,21 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 2, 0 ), Vector2( 3, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Lu_evil"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Icon:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 4, 0 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -46,11 +61,11 @@ __meta__ = {
 }
 
 [node name="Icon" type="Sprite" parent="."]
-position = Vector2( 31, 25 )
-scale = Vector2( 0.2, 0.2 )
+position = Vector2( 47, 30 )
+scale = Vector2( 0.08, 0.08 )
 texture = ExtResource( 2 )
-normal_map = ExtResource( 2 )
-hframes = 4
+hframes = 5
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 32, 48 )
@@ -59,4 +74,8 @@ shape = SubResource( 1 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 reset_on_save = false
 anims/Lu_Idle = SubResource( 2 )
+anims/Lu_evil = SubResource( 4 )
 anims/RESET = SubResource( 3 )
+
+[connection signal="body_entered" from="." to="." method="_on_WorldComplete_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_WorldComplete_body_exited"]
