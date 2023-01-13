@@ -31,17 +31,27 @@ func _physics_process(delta):
 			velocity.y += delta * 1.5 *GRAVITY	
 	
 	if(btn_pressed):
+		var total_silabas = self.get_parent().get_node("SilabasOptionButton").get_selected_id() + 1
+		
 		if(!is_on_floor()):
 			velocity.y += delta * 1.5 *GRAVITY	
 		else:
-			velocity.y = -1.2*WALK_SPEED
+			velocity.y = -1.2*WALK_SPEED*(3)
 
 		if(pos_x >= 1000):
 			velocity.x = 0
 			_wait(2)
 
 		else:
-			velocity.x =  WALK_SPEED
+			if total_silabas == 1:
+				velocity.x =  700
+			elif total_silabas == 2:
+				velocity.x =  500
+			elif total_silabas == 3:
+				velocity.x =  380
+			else:
+				velocity.x =  300	
+			
 		get_node("AnimatedSprite").set_flip_h(true)
 
 		move_and_slide(velocity, Vector2(0, -1))

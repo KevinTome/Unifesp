@@ -25,6 +25,7 @@ func render_target_containers(total):
 		target_control_instance.get_node("TargetContainer").id = index
 		target_control_instance.get_node("TargetBorder").set_size(target_container_size)
 		target_control_instance.get_node("TargetContainerPanel").set_size(target_container_size)
+		target_control_instance.get_node("Pontilhado").set_size(Vector2(target_container_size[0], 200))
 		
 		target_control_instance.get_node("TargetContainer").connect("item_dropped_on_target", self.get_parent().get_node("DragContainer"), "on_item_dropped_on_target")
 		self.get_parent().get_node("DragContainer").connect("item_dropped_on_source", target_control_instance.get_node("TargetContainer"), "_on_item_dropped_on_source")

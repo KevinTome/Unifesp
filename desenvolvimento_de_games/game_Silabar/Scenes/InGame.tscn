@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_09.png" type="Texture" id=1]
 [ext_resource path="res://assets/personagem/cenoura_606x590/skeleton-animation_19.png" type="Texture" id=2]
@@ -37,6 +37,7 @@
 [ext_resource path="res://Scripts/UIController.gd" type="Script" id=35]
 [ext_resource path="res://Scripts/TargetArea.gd" type="Script" id=36]
 [ext_resource path="res://Scripts/DragContainer.gd" type="Script" id=37]
+[ext_resource path="res://assets/EXTRAS/menu_off.png" type="Texture" id=38]
 
 [sub_resource type="ConvexPolygonShape2D" id=7]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -169,6 +170,10 @@ region_rect = Rect2( 0, 0, 365, 295 )
 texture = ExtResource( 15 )
 region_rect = Rect2( 0, 0, 365, 295 )
 
+[sub_resource type="StyleBoxTexture" id=28]
+texture = ExtResource( 38 )
+region_rect = Rect2( 0, 0, 200, 200 )
+
 [sub_resource type="StyleBoxTexture" id=24]
 texture = ExtResource( 16 )
 region_rect = Rect2( 0, 0, 123, 123 )
@@ -234,6 +239,7 @@ shape = SubResource( 6 )
 position = Vector2( 137, 383 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 502, 54 )
 shape = SubResource( 26 )
 disabled = true
@@ -255,6 +261,13 @@ margin_bottom = 142.0
 custom_styles/hover = SubResource( 20 )
 custom_styles/pressed = SubResource( 21 )
 custom_styles/normal = SubResource( 22 )
+script = ExtResource( 20 )
+
+[node name="menu" type="Button" parent="."]
+margin_left = 2.0
+margin_right = 111.0
+margin_bottom = 114.0
+custom_styles/normal = SubResource( 28 )
 script = ExtResource( 20 )
 
 [node name="Reiniciar" type="Button" parent="."]
@@ -325,5 +338,8 @@ script = ExtResource( 17 )
 [connection signal="btn_saltar_pressed" from="Conferir" to="Personagem" method="_on_Conferir_btn_saltar_pressed"]
 [connection signal="check_answer" from="Conferir" to="GameManager" method="_on_Conferir_check_answer"]
 [connection signal="pressed" from="Conferir" to="Conferir" method="_on_Conferir_pressed"]
+[connection signal="btn_saltar_pressed" from="menu" to="Personagem" method="_on_Conferir_btn_saltar_pressed"]
+[connection signal="check_answer" from="menu" to="GameManager" method="_on_Conferir_check_answer"]
+[connection signal="pressed" from="menu" to="menu" method="_on_Conferir_pressed"]
 [connection signal="item_selected" from="SilabasOptionButton" to="TargetArea" method="_on_SilabasOptionButton_item_selected"]
 [connection signal="item_selected" from="SilabasOptionButton" to="DragContainer" method="_on_SilabasOptionButton_item_selected"]

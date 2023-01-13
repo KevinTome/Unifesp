@@ -11,9 +11,9 @@ signal current_level_and_sublevel
 
 # Consts
 const WORDS = [
-	[["bo", "la"], ["jo", "go"], ["sol"]], # Level 1
+	[["bo", "la"], ["pé"], ["jo", "go"], ["sol"]], # Level 1
 	[["pai"], ["te", "sou", "ro"], ["flor"]], # Level 2
-	[["mo", "chi", "la"], ["sa", "ú", "de"], ["i", "de", "ias"]] # Level 3
+	[["mo", "chi", "la"], ["sa", "ú", "de"], ["i", "dei", "as"]] # Level 3
 ]
 
 func _ready():
